@@ -38,30 +38,28 @@ public class BingNewsSearch {
     static String subscriptionKey = "57bd1c41c9af472fb77d9a91409bf820";
 
     // Add your Bing Search V7 endpoint to your environment variables.
-//    static String endpoint = System.getenv("https://api.cognitive.microsoft.com") + "/bing/v7.0/news/search";
-    static String endpoint = "https://api.cognitive.microsoft.com" + "/bing/v7.0/news/search";
+    static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/news/search";
+    static String searchTerm = "COVID19";
 
-    static String searchTerm = "Microsoft";
+//    public static void main(String[] args) {
+//        try {
+//            System.out.println("Searching the Web for: " + searchTerm);
+//
+//            BingNewsResult result = SearchNews(searchTerm);
+//
+//            System.out.println("\nRelevant HTTP Headers:\n");
+//            for (String header : result.relevantHeaders.keySet())
+//                System.out.println(header + ": " + result.relevantHeaders.get(header));
+//
+//            System.out.println("\nJSON Response:\n");
+//            System.out.println(prettify(result.jsonResponse));
+//        } catch (Exception e) {
+//            e.printStackTrace(System.out);
+//            System.exit(1);
+//        }
+//    }
 
-    public static void main(String[] args) {
-        try {
-            System.out.println("Searching the Web for: " + searchTerm);
-
-            SearchResults result = SearchNews(searchTerm);
-
-            System.out.println("\nRelevant HTTP Headers:\n");
-            for (String header : result.relevantHeaders.keySet())
-                System.out.println(header + ": " + result.relevantHeaders.get(header));
-
-            System.out.println("\nJSON Response:\n");
-            System.out.println(prettify(result.jsonResponse));
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            System.exit(1);
-        }
-    }
-
-    public static SearchResults SearchNews(String searchQuery) throws Exception {
+    public static BingNewsResult SearchNews(String searchQuery) throws Exception {
         // Construct URL of search request (endpoint + query string)
         URL url = new URL(endpoint + "?q=" + URLEncoder.encode(searchQuery, "UTF-8"));
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
@@ -73,7 +71,7 @@ public class BingNewsSearch {
         String response = scanner.useDelimiter("\\A").next();
 
         // Construct result object for return
-        SearchResults results = new SearchResults(new HashMap<String, String>(), response);
+        BingNewsResult results = new BingNewsResult(new HashMap<String, String>(), response);
 
         // Extract Bing-related HTTP headers
         Map<String, List<String>> headers = connection.getHeaderFields();
@@ -95,16 +93,5 @@ public class BingNewsSearch {
         JsonObject json = JsonParser.parseString(json_text).getAsJsonObject();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(json);
-    }
-}
-
-// Container class for search results encapsulates relevant headers and JSON data
-class SearchResults {
-    HashMap<String, String> relevantHeaders;
-    String jsonResponse;
-
-    SearchResults(HashMap<String, String> headers, String json) {
-        relevantHeaders = headers;
-        jsonResponse = json;
     }
 }
