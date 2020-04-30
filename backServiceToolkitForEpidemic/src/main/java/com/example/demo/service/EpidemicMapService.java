@@ -42,18 +42,12 @@ public class EpidemicMapService {
                 .get("newslist").getAsJsonArray().get(0).getAsJsonObject().get("desc").getAsJsonObject(); // 对json的操作获取到inland data
 
         Map<String, String> map = new HashMap<>(); // 筛选出有用的数据
-        map.put("currentConfirmedCount", temp.get("currentConfirmedCount").toString());
-        map.put("confirmedCount", temp.get("confirmedCount").toString());
-        map.put("suspectedCount", temp.get("suspectedCount").toString());
-        map.put("curedCount", temp.get("curedCount").toString());
-        map.put("deadCount", temp.get("deadCount").toString());
-        map.put("seriousCount", temp.get("seriousCount").toString());
-        map.put("suspectedIncr", temp.get("suspectedIncr").toString());
-        map.put("currentConfirmedIncr", temp.get("currentConfirmedIncr").toString());
-        map.put("confirmedIncr", temp.get("confirmedIncr").toString());
-        map.put("curedIncr", temp.get("curedIncr").toString());
-        map.put("deadIncr", temp.get("deadIncr").toString());
-        map.put("seriousIncr", temp.get("seriousIncr").toString());
+        String[] mapList = {"currentConfirmedCount", "confirmedCount", "suspectedCount", "curedCount", "deadCount", "seriousCount",
+                "suspectedIncr", "currentConfirmedIncr", "confirmedIncr", "curedIncr", "deadIncr", "seriousIncr"};
+        for (String item : mapList
+        ) {
+            map.put(item, temp.get(item).toString());
+        }
 
         return gson.toJson(map);
     }
