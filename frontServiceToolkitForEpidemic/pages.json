@@ -1,16 +1,35 @@
 {
 	"pages": [{
 			//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-			"path": "pages/new/new",
+			"path": "pages/epidemicMap/epidemicMap",
 			"style": {
-				"navigationBarTitleText": "最新",
+				"navigationBarTitleText": "疫情地图",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/epidemicMap/community",
+			"style": {
+				"navigationBarTitleText": "小区疫情查询"
+			}
+		},
+		{
+			"path": "pages/epidemicMap/graph",
+			"style": {
+				"navigationBarTitleText": "全国/世界疫情趋势图"
+			}
+		},
+		{
+			"path": "pages/globalInformation/globalInformation",
+			"style": {
+				"navigationBarTitleText": "国际舆情",
 				"enablePullDownRefresh": true
 			}
 		},
 		{
 			"path": "pages/hot/hot",
 			"style": {
-				"navigationBarTitleText": "最热",
+				"navigationBarTitleText": "邻里拼团",
 				"enablePullDownRefresh": true
 			}
 		},
@@ -40,7 +59,7 @@
 		{
 			"path": "pages/tag/tag",
 			"style": {
-				"navigationBarTitleText": "分类",
+				"navigationBarTitleText": "防疫查询",
 				"enablePullDownRefresh": false
 			}
 		},
@@ -72,37 +91,44 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "看图",
-		"navigationBarBackgroundColor": "#FF80AB",
+		"navigationBarBackgroundColor": "#6ec5ff",
 		"backgroundColor": "#EFEFEF"
 	},
 	"tabBar": {
 		"color": "#444444",
-		"selectedColor": "#FF80AB",
+		"selectedColor": "#6ec5ff",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
-		"list": [{
-				"pagePath": "pages/new/new",
-				"iconPath": "static/index-0.png",
-				"selectedIconPath": "static/index-1.png",
-				"text": "最新"
+		"list": [
+			{
+				"pagePath": "pages/epidemicMap/epidemicMap",
+				"iconPath": "static/location-0.png",
+				"selectedIconPath": "static/location-1.png",
+				"text": "疫情地图"
+			},
+			{
+				"pagePath": "pages/globalInformation/globalInformation",
+				"iconPath": "static/news-0.png",
+				"selectedIconPath": "static/news-1.png",
+				"text": "国际舆情"
 			},
 			{
 				"pagePath": "pages/hot/hot",
-				"iconPath": "static/hot-0.png",
-				"selectedIconPath": "static/hot-1.png",
-				"text": "推荐"
+				"iconPath": "static/order-0.png",
+				"selectedIconPath": "static/order-1.png",
+				"text": "邻里拼团"
 			},
 			{
 				"pagePath": "pages/tag/tag",
-				"iconPath": "static/tag-0.png",
-				"selectedIconPath": "static/tag-1.png",
-				"text": "分类"
+				"iconPath": "static/search-0.png",
+				"selectedIconPath": "static/search-1.png",
+				"text": "防疫查询"
 			},
 			{
 				"pagePath": "pages/center/center",
 				"iconPath": "static/center-0.png",
 				"selectedIconPath": "static/center-1.png",
-				"text": "我的"
+				"text": "个人中心"
 			}
 		]
 	}

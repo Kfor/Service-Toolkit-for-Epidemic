@@ -2,7 +2,7 @@
 	font-family: texticons;
 	font-weight: normal;
 	font-style: normal;
-	src: url('https://at.alicdn.com/t/font_702773_g9f89om4v3j.ttf') format('truetype');
+	src: url('https://at.alicdn.com/t/font_1786455_daee750ta2j.ttf') format('truetype');
 }
 
 .index {
@@ -44,7 +44,7 @@
 }
 
 .card-num-view {
-	background-color: #FF80AB;
+	background-color: #6ec5ff;
 	line-height: 1;
 	display: inline-block;
 	padding: 3px 6px;
@@ -68,7 +68,7 @@
 	justify-content: center;
 	align-items: center;
 	padding: 14upx 0;
-	color: #FF80AB;
+	color: #6ec5ff;
 	margin: 20upx 20upx 20upx;
 	font-size: 30upx;
 	font-family: texticons;
@@ -180,7 +180,7 @@ view.tag,
 
 
 
-
+/* 疫情地图 */
 
 /* 个人中心 */
 
@@ -194,7 +194,7 @@ view.tag,
 	height: 240upx;
 	padding: 20upx;
 	box-sizing: border-box;
-	background-color: #FF80AB;
+	background-color: #6ec5ff;
 	flex-direction: row;
 	align-items: center;
 }
@@ -264,7 +264,7 @@ view.tag,
 	height: 90upx;
 	line-height: 90upx;
 	font-size: 34upx;
-	color: #FF80AB;
+	color: #6ec5ff;
 	text-align: center;
 	font-family: texticons;
 	margin-right: 20upx;
@@ -353,15 +353,15 @@ button {
 }
 
 button.login {
-	background-color: #FF80AB;
+	background-color: #6ec5ff;
 	color: #fff;
 }
 
 button.register {
 	margin-top: 30upx;
-	color: #FF80AB;
+	color: #6ec5ff;
 	background-color: #fff;
-	border-color: #FF80AB;
+	border-color: #6ec5ff;
 	border-width: 2upx;
 }
 

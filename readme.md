@@ -1,5 +1,9 @@
 ## 后端接口
 
+- 挂载在了<http://119.3.185.241:8080/>
+
+
+
 ### 疫情地图
 
 #### 获取地图上各个地区数据
@@ -94,7 +98,7 @@
 
       - 例子：http://localhost:8080/getOutlineData?area=global
 
-      - response返回全球各个数字，含义同inland见下方
+      - response返回全球各个数字，含义同inland见下方（5.2注！原始API中，所有带Incr字样的都失效了！）
 
         ```json
         {
@@ -115,7 +119,7 @@
 
       - 例子：http://localhost:8080/getOutlineData?area=inland
 
-      - response返回国内各个数字，含义见下方
+      - response返回国内各个数字，含义见下方（5.2注！原始API中，所有带Incr字样的都失效了！）
 
         ```json
         {
