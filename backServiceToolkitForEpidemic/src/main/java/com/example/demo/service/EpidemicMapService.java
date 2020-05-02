@@ -43,7 +43,9 @@ public class EpidemicMapService {
 
         Map<String, String> map = new HashMap<>(); // 筛选出有用的数据
         String[] mapList = {"currentConfirmedCount", "confirmedCount", "suspectedCount", "curedCount", "deadCount", "seriousCount",
-                "suspectedIncr", "currentConfirmedIncr", "confirmedIncr", "curedIncr", "deadIncr", "seriousIncr"};
+//                "suspectedIncr", "currentConfirmedIncr", "confirmedIncr", "curedIncr", "deadIncr", "seriousIncr"
+        };
+
         for (String item : mapList
         ) {
             map.put(item, temp.get(item).toString());
