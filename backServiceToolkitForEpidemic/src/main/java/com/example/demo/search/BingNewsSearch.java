@@ -47,7 +47,7 @@ public class BingNewsSearch {
 
         // Receive JSON body
         InputStream stream = connection.getInputStream();
-        Scanner scanner = new Scanner(stream);
+        Scanner scanner = new Scanner(stream, "utf-8");
         String response = scanner.useDelimiter("\\A").next();
 
         // Construct result object for return
