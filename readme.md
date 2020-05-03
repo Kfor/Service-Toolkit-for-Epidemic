@@ -209,6 +209,57 @@
   - 默认是以`COVID19` 为关键字的 50 条新闻
   - 新闻条目内部有具体新闻的URL，该URL可用于点击查看详细页面
   - 新闻条目有图片链接
+  
+- response格式：
+
+  ```json
+  {
+    "_type": "News",
+    "readLink": "https://api.cognitive.microsoft.com/api/v7/news/search?q=COVID19",
+    "queryContext": {
+      "originalQuery": "COVID19",
+      "adultIntent": false
+    },
+    "totalEstimatedMatches": 71100,
+    "sort": [
+      {
+        "name": "最佳匹配",
+        "id": "relevance",
+        "isSelected": true,
+        "url": "https://api.cognitive.microsoft.com/api/v7/news/search?q=COVID19"
+      },
+      {
+        "name": "最新发布",
+        "id": "date",
+        "isSelected": false,
+        "url": "https://api.cognitive.microsoft.com/api/v7/news/search?q=COVID19&sortby=date"
+      }
+    ],
+    "value": [
+      {
+        "name": "COVID-19 sigue siendo emergencia de salud pública de importancia internacional",
+        "url": "http://spanish.china.org.cn/txt/2020-05/03/content_76003460.htm",
+        "image": {
+          "thumbnail": {
+            "contentUrl": "https://www.bing.com/th?id=ON.2EE49CDD1C30976F5087789B8ABA0E83&pid=News",
+            "width": 320,
+            "height": 192
+          }
+        },
+        "description": "El director general de la Organización Mundial de la Salud (OMS), Tedros Adhanom Ghebreyesus, dijo hoy que el brote de la COVID-19 sigue constituyendo una emergencia de salud pública de importancia in",
+        "provider": [
+          {
+            "_type": "Organization",
+            "name": "China Internet Information Center"
+          }
+        ],
+        "datePublished": "2020-05-03T04:29:00.0000000Z"
+      }
+    ]
+  }
+  ```
+
+  
 
 #### 关键字检索的数据请求
 
