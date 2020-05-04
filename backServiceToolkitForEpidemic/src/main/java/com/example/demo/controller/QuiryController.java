@@ -17,11 +17,19 @@ public class QuiryController {
     MyUtils myUtils = new MyUtils();
     QuiryService quiryService = new QuiryService();
 
-    public QuiryController() throws UnsupportedEncodingException {
+
+    @GetMapping(value = "/quiryhospital")
+    public String returnHospital(@Param("city") String city) {
+        return myUtils.prettify(quiryService.getHospitalPosition(city));
     }
 
-    @GetMapping(value = "/quiry")
-    public String returnHospital(@Param("city") String city) throws Exception{
-        return myUtils.prettify(quiryService.getHospitalPosition(city));
+    @GetMapping(value = "/quirymedicine")
+    public String returnMedicine(@Param("city") String city) {
+        return myUtils.prettify(quiryService.getMedicinePosition(city));
+    }
+
+    @GetMapping(value = "/quirymask")
+    public String returnMask(@Param("number") String no){
+        return quiryService.IsMaskTure(no);
     }
 }
