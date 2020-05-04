@@ -279,3 +279,90 @@
 	"count":"10"
 }
 ```
+
+### 防疫查询
+
+#### 获取附近医院位置
+
+- GET方法：
+  - URL示例：http://localhost:8080/quiryhospital?city=杭州
+  - 参数：`city`为当前地理位置所在的地级市以及直辖市(例如：杭州，背景，上海等)，且在url中，参数city为中文
+
+- 返回值
+
+  ```json
+  {
+      "status":0,
+      "message":"ok",
+      "results":[
+          {
+              "name":string,
+              "location":{
+                  "lat":float,
+                  "lng":float
+              },
+              "address":string,
+              "province":string,
+              "city":string,
+              "area":string,
+              "street_id":string,
+              "telephone":string,
+              "detail":int,
+              "uid":string
+          },
+          ...
+      ]
+  }
+  ```
+
+#### 获取附近药店的位置
+
+- GET方法：
+  - URL示例：http://localhost:8080/quirymedicine?city=杭州
+  - 参数：`city`为当前地理位置所在的地级市以及直辖市(例如：杭州，背景，上海等)，且在url中，参数city为中文
+
+- 返回值
+
+```json
+  {
+      "status":0,
+      "message":"ok",
+      "results":[
+          {
+              "name":string,
+              "location":{
+                  "lat":float,
+                  "lng":float
+              },
+              "address":string,
+              "province":string,
+              "city":string,
+              "area":string,
+              "street_id":string,
+              "telephone":string,
+              "detail":int,
+              "uid":string
+          },
+          ...
+      ]
+  }
+```
+
+####   查询口罩真伪
+
+- 目前还没有找到合适的外部接口，现在先采取随机判断
+
+- GET方法：
+
+  - URL示例：http://localhost:8080/quirymask?number=12334
+  - 参数：number为口罩的编号
+
+- 返回值:
+
+  ```json
+  {
+      "status":true(or false)
+  }
+  ```
+
+  
