@@ -78,14 +78,40 @@
 			}
 		},
 		{
-			"path": "pages/login/login",
+			"path": "pages/center/personalInfo",
 			"style": {
-				"navigationBarTitleText": "登录"
+				"navigationBarTitleText": "个人信息"
 			}
 		},
 		{
-			"path": "pages/about/about",
-			"style": {}
+			"path": "pages/center/order",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		},
+		{
+			"path": "pages/center/collection",
+			"style": {
+				"navigationBarTitleText": "我的收藏"
+			}
+		},
+		{
+			"path": "pages/center/settings",
+			"style": {
+				"navigationBarTitleText": "设置"
+			}
+		},
+		{
+			"path": "pages/center/reflection",
+			"style": {
+				"navigationBarTitleText": "帮助与反馈"
+			}
+		},
+		{
+			"path": "pages/center/version",
+			"style": {
+				"navigationBarTitleText": "版本"
+			}
 		}
 	],
 	"globalStyle": {

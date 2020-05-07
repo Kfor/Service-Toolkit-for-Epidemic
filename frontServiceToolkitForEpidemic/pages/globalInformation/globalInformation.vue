@@ -1,24 +1,29 @@
 <template>
 	<view class="news">
-		<div class="search">
+		<view class="search">
 			<view class="search-block">
 				<view class="search-ico-wapper">
 					<text class="list-icon">&#59264;</text>
 				</view>
-				<input type="text" value="" placeholder="点击输入搜索内容" class="search-text" maxlength="10" focus/>
+				<view>
+					<input type="text" class="search-text" focus placeholder="点击输入搜索结果" @input="onInput">
+				</view>
 				<view class="search-ico-wapper1">
-					<text class="list-icon" style="margin-left: 0upx;">&#58885;</text>
+					<text class="list-icon" style="margin-left: 0upx;" @click="getData">&#58885;</text>
 				</view>
 			</view>
 			<view class="shadow"></view>
-		</div>
+		</view>
 		<div class="newsList">
-			<div v-for="item in list" :value="item">
+			<div v-for="item in list" :value="item"  v-if="(item.image && item.image.thumbnail.contentUrl)!=null">
 				<div class="block" @click="See(item.url)">
-					<br>
-					<text class="title">{{item.name}}</text>
-					<text class="description">{{item.description}}</text><br>
-		<!--			<text class="date">{{item.datePublished}} </text><br>-->
+					<div class="news-img">
+						<img :src="item.image && item.image.thumbnail.contentUrl"></img> 
+					</div>
+					<div class="block2"> 
+						<text class="title">{{item.name}}</text>
+						<text class="description">{{item.description}}</text><br>
+					</div>
 				</div>
 			</div> 
 		</div>
@@ -32,24 +37,12 @@
 				refreshing: false,
 				itemList: [],
 				list: [],
+				searchText:null,
 				fetchPageNum: 1
 			}
 		},
-		
-		onReachBottom() {
-			console.log('滑动到页面底部')
-			this.getData();
-		},
-		onPullDownRefresh() {
-			console.log('下拉刷新');
-			this.refreshing = true;
-			this.getData();
-		},
 		mounted(){  //template挂载到页面时调用
-		//	this.getMapData(); //执行getOutlineData方法
-		    this.getData(); //执行getOutlineData方法
-		//    this.mychart = echarts.init(this.$refs.mapbox);
-		//    this.mychart.setOption(option)
+		    this.getData(); 
 		},
 		methods: {
 			getData() {
@@ -65,16 +58,34 @@
 						}
 					}
 				});
+				console.log('list', this.list);
+			},
+			getSearchContent(){
+				uni.request({
+					url: this.$serverUrl + '/getNews', //仅为示例，并非真实接口地址。
+					data: {//参数
+						"query":this.searchText,
+						"mkt":"zh-CN",
+						"count":"10"
+						},
+				    method:'POST',
+					success: res => {
+						console.log('返回', res.data);
+						this.list = res.data.value;
+					}
+				});
 			},
 			See (e) {
-			        window.location.href = e
-			      },
-			goDetail(e) {
-				uni.navigateTo({
-					url: '../detail/detail?data=' + encodeURIComponent(JSON.stringify(e))
-				})
+			        window.location.href = e;
 			},
-			
+			onInput(e) {
+			    console.log(e.detail);
+				var string = e.detail;
+				let reg=new RegExp(' ','g')//g代表全部
+			    this.searchText = JSON.stringify(string).replace(reg,'+');
+				this.getSearchContent();
+				console.log("replace",this.searchText);
+			}
 		}
 	}
 </script>
@@ -98,7 +109,7 @@
  
  .search-text{
      font-size: 14px;
-     background-color: #FFFFFF;
+     background-color: #ffffff;
      height: 60upx;
      width: 480upx;
  }
@@ -141,7 +152,6 @@
   	
   	width: 90%;
   	margin-top: 30upx;
-  	margin-left: 5%;
   	position: absolute;
   }
   
@@ -149,14 +159,31 @@
 	  background-color: #FFFFFF;
 	  width: 100%;
 	  margin-bottom: 40upx;
+	  margin-left: 40upx;
 	  -moz-box-shadow:2px 2px 10px #06c;
 	  -webkit-box-shadow:2px 2px 10px #06c;
 	  box-shadow:2px 2px 10px #06c;
   }
   
+  .news-img {
+	  width: 35%;
+	  height: 100%;
+	  margin-left: 5%;
+	  margin-top: 2.5%;
+	  margin-bottom: 2.5%;
+	  display: inline-block;
+	 
+	}
+  
+  .block2 {
+	  width: 55%;
+	  height:100%;
+	  margin-top: 5%;
+	  display: inline-block;
+  }
+  
   .title {
-	width:90%;
-	margin-left: 5%;
+	width:100%;
 	margin-bottom: 10upx;
 	display: -webkit-box;
   	font-size: 25upx;
@@ -166,8 +193,7 @@
   }
   
   .description {
-	width:90%;
-	padding-left: 5%;
+	width:100%;
   	font-size: 15upx;
   	color: #908b7f;
 	display: -webkit-box;
@@ -179,18 +205,5 @@
 	-webkit-box-orient: vertical;
   }
   
-  .date {
-  	font-size: 20upx;
-  	color: #868686;
-	text-align: right;
-	align-items: right;
-	align-content: right;
-	
-  }
-  
-  .url {
-  	font-size: 25upx;
-  	color: #000000;
-  	margin:0 auto;
-  }
+
 </style>

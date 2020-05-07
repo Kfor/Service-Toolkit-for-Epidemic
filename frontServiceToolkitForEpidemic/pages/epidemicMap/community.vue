@@ -20,13 +20,15 @@
 		<span></span>
 		<div class="contentList">
 			<text class="title">小区</text>
-			<text class="title">经度</text>
-			<text class="title">纬度</text>
-			<div v-for="item in newslist" :value="item">
+			<text class="title">与我相距</text>
+		<!--	<text class="title">纬度</text> -->
+			<div v-for="item in newslist" :value="item" >
 				<div claass="block">
 				<div class="col1">{{ item.locale}} </div>
-				<div class="col2">{{ item.lng}} </div>
-				<div class="col3">{{ item.lat}} </div>
+				
+				<div class="col2" >{{ distance(lat, lng, item.lat, item.lng)}} km </div>
+			<!--	<div class="col2">{{ item.lng}} </div>
+				<div class="col3">{{ item.lat}} </div> -->
 				</div>
 			</div> 
 		</div>
@@ -40,11 +42,11 @@
 				arr: [
 		{name: "选择省份", sub: [{name: "请选择"}], type: 1},
 		{
-			name: "北京省",
+			name: "北京",
 			sub: [
 				{name: "请选择", sub: []},
 				{
-					name: "北京市",
+					name: "北京",
 					sub: [{name: "请选择"}, {name: "东城区"}, {name: "西城区"}, {name: "崇文区"}, {name: "宣武区"}, {name: "朝阳区"}, {name: "海淀区"}, {name: "丰台区"}, {name: "石景山区"}, {name: "房山区"}, {name: "通州区"}, {name: "顺义区"}, {name: "昌平区"}, {name: "大兴区"}, {name: "怀柔区"}, {name: "平谷区"}, {name: "门头沟区"}, {name: "密云县"}, {name: "延庆县"}, {name: "其他"}],
 					type: 0
 				}], type: 1
@@ -654,60 +656,60 @@
 			type: 1
 		},
 		{
-			name: "山西省",
+			name: "山西",
 			sub: [{name: "请选择", sub: []},
 				{
-					name: "太原市",
+					name: "太原",
 					sub: [{name: "请选择"}, {name: "杏花岭区"}, {name: "小店区"}, {name: "迎泽区"}, {name: "尖草坪区"}, {name: "万柏林区"}, {name: "晋源区"}, {name: "古交市"}, {name: "阳曲县"}, {name: "清徐县"}, {name: "娄烦县"}, {name: "其他"}],
 					type: 0
 				},
 				{
-					name: "大同市",
+					name: "大同",
 					sub: [{name: "请选择"}, {name: "城区"}, {name: "矿区"}, {name: "南郊区"}, {name: "新荣区"}, {name: "大同县"}, {name: "天镇县"}, {name: "灵丘县"}, {name: "阳高县"}, {name: "左云县"}, {name: "广灵县"}, {name: "浑源县"}, {name: "其他"}],
 					type: 0
 				},
 				{
-					name: "阳泉市",
+					name: "阳泉",
 					sub: [{name: "请选择"}, {name: "城区"}, {name: "矿区"}, {name: "郊区"}, {name: "平定县"}, {name: "盂县"}, {name: "其他"}],
 					type: 0
 				},
 				{
-					name: "长治市",
+					name: "长治",
 					sub: [{name: "请选择"}, {name: "城区"}, {name: "郊区"}, {name: "潞城市"}, {name: "长治县"}, {name: "长子县"}, {name: "平顺县"}, {name: "襄垣县"}, {name: "沁源县"}, {name: "屯留县"}, {name: "黎城县"}, {name: "武乡县"}, {name: "沁县"}, {name: "壶关县"}, {name: "其他"}],
 					type: 0
 				},
 				{
-					name: "晋城市",
+					name: "晋城",
 					sub: [{name: "请选择"}, {name: "城区"}, {name: "高平市"}, {name: "泽州县"}, {name: "陵川县"}, {name: "阳城县"}, {name: "沁水县"}, {name: "其他"}],
 					type: 0
 				},
 				{
-					name: "朔州市",
+					name: "朔州",
 					sub: [{name: "请选择"}, {name: "朔城区"}, {name: "平鲁区"}, {name: "山阴县"}, {name: "右玉县"}, {name: "应县"}, {name: "怀仁县"}, {name: "其他"}],
 					type: 0
 				},
 				{
-					name: "晋中市",
+					name: "晋中",
 					sub: [{name: "请选择"}, {name: "榆次区"}, {name: "介休市"}, {name: "昔阳县"}, {name: "灵石县"}, {name: "祁县"}, {name: "左权县"}, {name: "寿阳县"}, {name: "太谷县"}, {name: "和顺县"}, {name: "平遥县"}, {name: "榆社县"}, {name: "其他"}],
 					type: 0
 				},
 				{
-					name: "运城市",
+					name: "运城",
 					sub: [{name: "请选择"}, {name: "盐湖区"}, {name: "河津市"}, {name: "永济市"}, {name: "闻喜县"}, {name: "新绛县"}, {name: "平陆县"}, {name: "垣曲县"}, {name: "绛县"}, {name: "稷山县"}, {name: "芮城县"}, {name: "夏县"}, {name: "万荣县"}, {name: "临猗县"}, {name: "其他"}],
 					type: 0
 				},
 				{
-					name: "忻州市",
+					name: "忻州",
 					sub: [{name: "请选择"}, {name: "忻府区"}, {name: "原平市"}, {name: "代县"}, {name: "神池县"}, {name: "五寨县"}, {name: "五台县"}, {name: "偏关县"}, {name: "宁武县"}, {name: "静乐县"}, {name: "繁峙县"}, {name: "河曲县"}, {name: "保德县"}, {name: "定襄县"}, {name: "岢岚县"}, {name: "其他"}],
 					type: 0
 				},
 				{
-					name: "临汾市",
+					name: "临汾",
 					sub: [{name: "请选择"}, {name: "尧都区"}, {name: "侯马市"}, {name: "霍州市"}, {name: "汾西县"}, {name: "吉县"}, {name: "安泽县"}, {name: "大宁县"}, {name: "浮山县"}, {name: "古县"}, {name: "隰县"}, {name: "襄汾县"}, {name: "翼城县"}, {name: "永和县"}, {name: "乡宁县"}, {name: "曲沃县"}, {name: "洪洞县"}, {name: "蒲县"}, {name: "其他"}],
 					type: 0
 				},
 				{
-					name: "吕梁市",
+					name: "吕梁",
 					sub: [{name: "请选择"}, {name: "离石区"}, {name: "孝义市"}, {name: "汾阳市"}, {name: "文水县"}, {name: "中阳县"}, {name: "兴县"}, {name: "临县"}, {name: "方山县"}, {name: "柳林县"}, {name: "岚县"}, {name: "交口县"}, {name: "交城县"}, {name: "石楼县"}, {name: "其他"}],
 					type: 0
 				},
@@ -2040,11 +2042,14 @@
 		},
 		{name: "其他"}
 	],
-				province: '北京省',
-				city: '北京市',
-				district: '东城区',
+				province: '选择省份',
+				city: '请选择',
+				district: '请选择',
 				cityArr: [],
 				districtArr: [],
+				lat:'',
+				lng:'',
+				dist:'',
 				newslist:[]
 			}
 		},
@@ -2056,7 +2061,7 @@
 				
 				uni.request({
 					url: this.$serverUrl + '/getCommunityData?province=' + this.province+ 
-					'&city=' + this.city + '&district=' + this.district,
+					'省&city=' + this.city + '市&district=' + this.district,
 					success: (ret) => {
 						console.log('data', ret);
 						console.log('data', this.$serverUrl + '/getCommunityData?province=' + this.province+ 
@@ -2069,8 +2074,32 @@
 					}
 				});
 		
-				},
-			
+			},
+			getLocation() {
+				uni.getLocation({
+				  //  type: 'wgs84',
+				    success: function (res) {
+				        console.log('当前位置的经度：' + res.longitude);
+				        console.log('当前位置的纬度：' + res.latitude);
+						this.lat=res.latitude;
+						this.lng=res.longitude;
+				    }
+				});
+			},
+			distance: function (la1, lo1, la2, lo2) {
+				console.log('经度：' + la2);
+				console.log('纬度：' + lo2);
+			    var La1 = la1 * Math.PI / 180.0;
+			    var La2 = la2 * Math.PI / 180.0;
+			    var La3 = La1 - La2;
+			    var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+			    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+			    s = s * 6378.137;
+			    s = Math.round(s * 10000) / 10000;
+			    s = s.toFixed(2);
+				console.log('dist',s);
+				return s;
+			},
 			updateCity: function () {
 				for (var i in this.arr) {
 					var obj = this.arr[i];
@@ -2111,8 +2140,9 @@
 				this.updateDistrict();
 			},
 			district: function(){
-				this.getData();
-			}
+				this.getLocation();
+				this.getData();	
+			},
 		}
 	}
 </script>
@@ -2135,7 +2165,6 @@
 	.contentList {
 		background-color: #FFFFFF;
 		width: 95%;
-		height: 1000upx;
 		margin-top: 150upx;
 		margin-left: 2.5%;
 		text-align: center;
@@ -2143,25 +2172,24 @@
 	}
 	
 	.title {
-		width:200upx;
+		width:330upx;
 		font-size: 34upx;
 		font-weight: 700;
 		line-height: 100upx;
-		margin-left: 80upx;
-		margin-right: 80upx;
+		margin-left: 120upx;
+		margin-right:150upx;
 		position: relative;
-		text-align: left;
+	
 	}
 	
 	.block {
 		width: 700upx;
-		height: 200upx;
-		margin: 20upx 0 20upx 20upx;
+		height: 100upx;
 		text-align: center;
 	}
 	
 	.col1 {
-		width: 240upx;
+		width: 330upx;
 		height: 80upx;
 		margin: 20upx 0 20upx 20upx;
 		font-size: 28upx;
@@ -2170,7 +2198,7 @@
 	}
 	
 	.col2 {
-		width: 180upx;
+		width: 330upx;
 		height: 80upx;
 		margin: 20upx 0 20upx 20upx;
 		font-size: 25upx;

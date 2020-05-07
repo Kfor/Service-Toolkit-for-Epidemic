@@ -1,0 +1,65 @@
+{
+  "pages": [
+    "pages/epidemicMap/epidemicMap",
+    "pages/epidemicMap/community",
+    "pages/epidemicMap/graph",
+    "pages/globalInformation/globalInformation",
+    "pages/hot/hot",
+    "pages/detail/detail",
+    "pages/tag/tag",
+    "pages/list/list",
+    "pages/center/center",
+    "pages/center/personalInfo",
+    "pages/center/order",
+    "pages/center/collection",
+    "pages/center/settings",
+    "pages/center/reflection",
+    "pages/center/version"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "看图",
+    "navigationBarBackgroundColor": "#6ec5ff",
+    "backgroundColor": "#EFEFEF"
+  },
+  "tabBar": {
+    "color": "#444444",
+    "selectedColor": "#6ec5ff",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/epidemicMap/epidemicMap",
+        "iconPath": "static/location-0.png",
+        "selectedIconPath": "static/location-1.png",
+        "text": "疫情地图"
+      },
+      {
+        "pagePath": "pages/globalInformation/globalInformation",
+        "iconPath": "static/news-0.png",
+        "selectedIconPath": "static/news-1.png",
+        "text": "国际舆情"
+      },
+      {
+        "pagePath": "pages/hot/hot",
+        "iconPath": "static/order-0.png",
+        "selectedIconPath": "static/order-1.png",
+        "text": "邻里拼团"
+      },
+      {
+        "pagePath": "pages/tag/tag",
+        "iconPath": "static/search-0.png",
+        "selectedIconPath": "static/search-1.png",
+        "text": "防疫查询"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "iconPath": "static/center-0.png",
+        "selectedIconPath": "static/center-1.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
