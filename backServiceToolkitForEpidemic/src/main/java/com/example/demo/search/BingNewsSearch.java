@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class BingNewsSearch {
 
     // Add your Bing Search V7 subscription key to your environment variables.
-    static String subscriptionKey = "57bd1c41c9af472fb77d9a91409bf820";
+    static String subscriptionKey = "68e3a4054ad24fe6bfb56fbe6b198f14";
 
     // Add your Bing Search V7 endpoint to your environment variables.
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/news/search";
@@ -47,7 +47,7 @@ public class BingNewsSearch {
 
         // Receive JSON body
         InputStream stream = connection.getInputStream();
-        Scanner scanner = new Scanner(stream);
+        Scanner scanner = new Scanner(stream, "utf-8");
         String response = scanner.useDelimiter("\\A").next();
 
         // Construct result object for return
@@ -71,7 +71,7 @@ public class BingNewsSearch {
     // Pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
         JsonObject json = JsonParser.parseString(json_text).getAsJsonObject();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
         return gson.toJson(json);
     }
 

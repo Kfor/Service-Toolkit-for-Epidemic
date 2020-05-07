@@ -98,7 +98,7 @@
 
       - 例子：http://localhost:8080/getOutlineData?area=global
 
-      - response返回全球各个数字，含义同inland见下方
+      - response返回全球各个数字，含义同inland见下方（5.2注！原始API中，所有带Incr字样的都失效了！）
 
         ```json
         {
@@ -119,7 +119,7 @@
 
       - 例子：http://localhost:8080/getOutlineData?area=inland
 
-      - response返回国内各个数字，含义见下方
+      - response返回国内各个数字，含义见下方（5.2注！原始API中，所有带Incr字样的都失效了！）
 
         ```json
         {
@@ -209,6 +209,57 @@
   - 默认是以`COVID19` 为关键字的 50 条新闻
   - 新闻条目内部有具体新闻的URL，该URL可用于点击查看详细页面
   - 新闻条目有图片链接
+  
+- response格式：
+
+  ```json
+  {
+    "_type": "News",
+    "readLink": "https://api.cognitive.microsoft.com/api/v7/news/search?q=COVID19",
+    "queryContext": {
+      "originalQuery": "COVID19",
+      "adultIntent": false
+    },
+    "totalEstimatedMatches": 71100,
+    "sort": [
+      {
+        "name": "最佳匹配",
+        "id": "relevance",
+        "isSelected": true,
+        "url": "https://api.cognitive.microsoft.com/api/v7/news/search?q=COVID19"
+      },
+      {
+        "name": "最新发布",
+        "id": "date",
+        "isSelected": false,
+        "url": "https://api.cognitive.microsoft.com/api/v7/news/search?q=COVID19&sortby=date"
+      }
+    ],
+    "value": [
+      {
+        "name": "COVID-19 sigue siendo emergencia de salud pública de importancia internacional",
+        "url": "http://spanish.china.org.cn/txt/2020-05/03/content_76003460.htm",
+        "image": {
+          "thumbnail": {
+            "contentUrl": "https://www.bing.com/th?id=ON.2EE49CDD1C30976F5087789B8ABA0E83&pid=News",
+            "width": 320,
+            "height": 192
+          }
+        },
+        "description": "El director general de la Organización Mundial de la Salud (OMS), Tedros Adhanom Ghebreyesus, dijo hoy que el brote de la COVID-19 sigue constituyendo una emergencia de salud pública de importancia in",
+        "provider": [
+          {
+            "_type": "Organization",
+            "name": "China Internet Information Center"
+          }
+        ],
+        "datePublished": "2020-05-03T04:29:00.0000000Z"
+      }
+    ]
+  }
+  ```
+
+  
 
 #### 关键字检索的数据请求
 
@@ -228,3 +279,90 @@
 	"count":"10"
 }
 ```
+
+### 防疫查询
+
+#### 获取附近医院位置
+
+- GET方法：
+  - URL示例：http://localhost:8080/quiryhospital?city=杭州
+  - 参数：`city`为当前地理位置所在的地级市以及直辖市(例如：杭州，背景，上海等)，且在url中，参数city为中文
+
+- 返回值
+
+  ```json
+  {
+      "status":0,
+      "message":"ok",
+      "results":[
+          {
+              "name":string,
+              "location":{
+                  "lat":float,
+                  "lng":float
+              },
+              "address":string,
+              "province":string,
+              "city":string,
+              "area":string,
+              "street_id":string,
+              "telephone":string,
+              "detail":int,
+              "uid":string
+          },
+          ...
+      ]
+  }
+  ```
+
+#### 获取附近药店的位置
+
+- GET方法：
+  - URL示例：http://localhost:8080/quirymedicine?city=杭州
+  - 参数：`city`为当前地理位置所在的地级市以及直辖市(例如：杭州，背景，上海等)，且在url中，参数city为中文
+
+- 返回值
+
+```json
+  {
+      "status":0,
+      "message":"ok",
+      "results":[
+          {
+              "name":string,
+              "location":{
+                  "lat":float,
+                  "lng":float
+              },
+              "address":string,
+              "province":string,
+              "city":string,
+              "area":string,
+              "street_id":string,
+              "telephone":string,
+              "detail":int,
+              "uid":string
+          },
+          ...
+      ]
+  }
+```
+
+####   查询口罩真伪
+
+- 目前还没有找到合适的外部接口，现在先采取随机判断
+
+- GET方法：
+
+  - URL示例：http://localhost:8080/quirymask?number=12334
+  - 参数：number为口罩的编号
+
+- 返回值:
+
+  ```json
+  {
+      "status":true(or false)
+  }
+  ```
+
+  
