@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class BingNewsSearch {
 
     // Add your Bing Search V7 subscription key to your environment variables.
-    static String subscriptionKey = "68e3a4054ad24fe6bfb56fbe6b198f14";
+    static String subscriptionKey = "4cc7889c690f4601b6202a5694a74173";
 
     // Add your Bing Search V7 endpoint to your environment variables.
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/news/search";
