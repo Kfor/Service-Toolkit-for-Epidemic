@@ -1,4 +1,4 @@
-package com.example.demo.search;
+package com.example.demo.service.search;
 
 public class BingNewsCondition {
     private String query = null;

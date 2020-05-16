@@ -1,4 +1,4 @@
-package com.example.demo.search;
+package com.example.demo.service.search;
 
 import java.util.HashMap;
 
