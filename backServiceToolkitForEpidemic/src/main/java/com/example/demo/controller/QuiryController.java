@@ -29,7 +29,7 @@ public class QuiryController {
     }
 
     @GetMapping(value = "/quirymask")
-    public String returnMask(@Param("number") String no){
-        return quiryService.IsMaskTure(no);
+    public String returnMask(@Param("number") String number){
+        return myUtils.prettify(quiryService.quiryMask(number));
     }
 }
