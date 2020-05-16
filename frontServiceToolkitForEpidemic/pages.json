@@ -27,9 +27,30 @@
 			}
 		},
 		{
-			"path": "pages/hot/hot",
+			"path": "pages/crowdingOrdering/index",
 			"style": {
 				"navigationBarTitleText": "邻里拼团",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/crowdingOrdering/fruit",
+			"style": {
+				"navigationBarTitleText": "邻里拼团-水果蔬菜",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/crowdingOrdering/medicine",
+			"style": {
+				"navigationBarTitleText": "邻里拼团-医用物品",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/crowdingOrdering/supermarket",
+			"style": {
+				"navigationBarTitleText": "邻里拼团-超市物品",
 				"enablePullDownRefresh": true
 			}
 		},
@@ -113,7 +134,7 @@
 				"navigationBarTitleText": "版本"
 			}
 		}
-	],
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "看图",
@@ -139,7 +160,7 @@
 				"text": "国际舆情"
 			},
 			{
-				"pagePath": "pages/hot/hot",
+				"pagePath": "pages/crowdingOrdering/index",
 				"iconPath": "static/order-0.png",
 				"selectedIconPath": "static/order-1.png",
 				"text": "邻里拼团"
