@@ -4,7 +4,10 @@
     "pages/epidemicMap/community",
     "pages/epidemicMap/graph",
     "pages/globalInformation/globalInformation",
-    "pages/hot/hot",
+    "pages/crowdingOrdering/index",
+    "pages/crowdingOrdering/fruit",
+    "pages/crowdingOrdering/medicine",
+    "pages/crowdingOrdering/supermarket",
     "pages/detail/detail",
     "pages/tag/tag",
     "pages/list/list",
@@ -42,7 +45,7 @@
         "text": "国际舆情"
       },
       {
-        "pagePath": "pages/hot/hot",
+        "pagePath": "pages/crowdingOrdering/index",
         "iconPath": "static/order-0.png",
         "selectedIconPath": "static/order-1.png",
         "text": "邻里拼团"
@@ -61,5 +64,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap1.json"
 }

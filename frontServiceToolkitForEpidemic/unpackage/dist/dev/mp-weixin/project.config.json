@@ -8,7 +8,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.2",
-	"appid": "touristappid",
+	"appid": "wx078aafd73d425e7a",
 	"projectname": "Service-Toolkit-for-Epidemic",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -26,19 +26,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"name": "",
 					"path": "",
 					"query": "",
 					"id": 0
-				},
-				{
-					"id": 1,
-					"name": "pages/epidemicMap/epidemicMap",
-					"pathName": "pages/epidemicMap/epidemicMap",
-					"query": ""
 				}
 			]
 		}
