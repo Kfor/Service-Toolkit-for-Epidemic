@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface EpidemicMapDao extends JpaRepository<EpidemicMap, Integer> {
-    @Query(value = "select * from epidemic_map where modified_time=(select max(modified_time) from epidemic_map where type=:type) and type=:type", nativeQuery = true)
+    @Query(value = "select * from epidemic_map where modified_time=(select max(modified_time) from epidemic_map where type=:type) and type=:type limit 1", nativeQuery = true)
     EpidemicMap findLatestByType(@Param("type") String type);
 }
