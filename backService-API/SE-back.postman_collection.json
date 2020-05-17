@@ -7,10 +7,10 @@
 	},
 	"item": [
 		{
-			"name": "Map",
+			"name": "getMapData",
 			"item": [
 				{
-					"name": "globalMap",
+					"name": "?area=global",
 					"event": [
 						{
 							"listen": "test",
@@ -101,7 +101,7 @@
 					"response": []
 				},
 				{
-					"name": "inlandMap",
+					"name": "?area=inland",
 					"event": [
 						{
 							"listen": "test",
@@ -197,8 +197,917 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "News",
-			"item": [],
+			"name": "getNews",
+			"item": [
+				{
+					"name": "getNews",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e846d300-5119-420c-b318-db132c61bcf2",
+								"exec": [
+									"console.log(responseBody)\r",
+									"// test if code==200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// test if illustrate content-type\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"var isCode200 = responseCode.code == 200\r",
+									"var isCode500 = responseCode.code == 500\r",
+									"\r",
+									"var schema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": {\r",
+									"        \"type\":\"object\",\r",
+									"        \"properties\": {\r",
+									"            \"name\": {\"type\":\"string\"},\r",
+									"            \"url\": {\"type\":\"string\"},\r",
+									"            \"image\": {\r",
+									"                \"type\":\"object\",\r",
+									"                \"properties\":{\r",
+									"                    \"thumbnail\":{\r",
+									"                        \"type\":\"object\",\r",
+									"                        \"properties\":{\r",
+									"                            \"contentUrl\":{\"type\":\"string\"},\r",
+									"                            \"width\":{\"type\":\"integer\"},\r",
+									"                            \"height\":{\"type\":\"integer\"}\r",
+									"                        }\r",
+									"                    }\r",
+									"                }\r",
+									"            },\r",
+									"            \"description\": {\"type\":\"string\"},\r",
+									"            // \"provider\": {\r",
+									"            //     \"type\":\"object\",\r",
+									"            //     \"properties\":{\r",
+									"            //         \"_type\":{\"type\":\"string\"},\r",
+									"            //         \"name\":{\"type\":\"string\"}\r",
+									"            //     }\r",
+									"            // },\r",
+									"            \"datePublished\":{\"type\":\"string\"}\r",
+									"        },\r",
+									"        \"additionalProperties\":true,\r",
+									"        \"required\":[\"name\",\"url\",\"description\",\"datePublished\"]\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"(isCode200 ? pm.test : pm.test.skip)(\"status is 200, items are complete\", () => {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData.value, schema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"(isCode500 ? pm.test : pm.test.skip)(\"status is 500, server code is 429, query too frequently, limited by API provider\", () => {\r",
+									"    pm.expect(pm.response.text()).to.include(\"response code: 429\");\r",
+									"});\r",
+									"\r",
+									"(isCode500 ? pm.test : pm.test.skip)(\"status is 500, server code is 403, not possess power to query this target, limited by API provider or key is outdated\", () => {\r",
+									"    pm.expect(pm.response.text()).to.include(\"response code: 403\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://119.3.185.241:8080/getNews",
+							"protocol": "http",
+							"host": [
+								"119",
+								"3",
+								"185",
+								"241"
+							],
+							"port": "8080",
+							"path": [
+								"getNews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNews/querybody",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "106925a1-d95c-4fff-870b-0370e6522bad",
+								"exec": [
+									"// print log to check if input data is right\r",
+									"pm.environment.set(\"queryKey\", String(data.queryKey));\r",
+									"pm.environment.set(\"mkt\", data.mkt);\r",
+									"pm.environment.set(\"newsCount\", data.newsCount);\r",
+									"console.log(data)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ac508f3d-cd43-4201-9de0-0b174fe9480d",
+								"exec": [
+									"console.log(responseBody)\r",
+									"// test if code==200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// test if illustrate content-type\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"var isCode200 = responseCode.code == 200\r",
+									"var isCode500 = responseCode.code == 500\r",
+									"\r",
+									"var schema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": {\r",
+									"        \"type\":\"object\",\r",
+									"        \"properties\": {\r",
+									"            \"name\": {\"type\":\"string\"},\r",
+									"            \"url\": {\"type\":\"string\"},\r",
+									"            \"image\": {\r",
+									"                \"type\":\"object\",\r",
+									"                \"properties\":{\r",
+									"                    \"thumbnail\":{\r",
+									"                        \"type\":\"object\",\r",
+									"                        \"properties\":{\r",
+									"                            \"contentUrl\":{\"type\":\"string\"},\r",
+									"                            \"width\":{\"type\":\"integer\"},\r",
+									"                            \"height\":{\"type\":\"integer\"}\r",
+									"                        }\r",
+									"                    }\r",
+									"                }\r",
+									"            },\r",
+									"            \"description\": {\"type\":\"string\"},\r",
+									"            // \"provider\": {\r",
+									"            //     \"type\":\"object\",\r",
+									"            //     \"properties\":{\r",
+									"            //         \"_type\":{\"type\":\"string\"},\r",
+									"            //         \"name\":{\"type\":\"string\"}\r",
+									"            //     }\r",
+									"            // },\r",
+									"            \"datePublished\":{\"type\":\"string\"}\r",
+									"        },\r",
+									"        \"additionalProperties\":true,\r",
+									"        \"required\":[\"name\",\"url\",\"description\",\"datePublished\"]\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"(isCode200 ? pm.test : pm.test.skip)(\"status is 200, items are complete\", () => {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData.value, schema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"(isCode500 ? pm.test : pm.test.skip)(\"status is 500, server code is 429, query too frequently, limited by API provider\", () => {\r",
+									"    pm.expect(pm.response.text()).to.include(\"response code: 429\");\r",
+									"});\r",
+									"\r",
+									"(isCode500 ? pm.test : pm.test.skip)(\"status is 500, server code is 403, not possess power to query this target, limited by API provider or key is outdated\", () => {\r",
+									"    pm.expect(pm.response.text()).to.include(\"response code: 403\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8",
+								"type": "text"
+							},
+							{
+								"key": "Ch",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"query\":\"{{queryKey}}\",\r\n\t\"mkt\":\"{{mkt}}\",\r\n\t\"count\":\"{{newsCount}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://119.3.185.241:8080/getNews",
+							"protocol": "http",
+							"host": [
+								"119",
+								"3",
+								"185",
+								"241"
+							],
+							"port": "8080",
+							"path": [
+								"getNews"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "getOutlineData",
+			"item": [
+				{
+					"name": "?area=global",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "397fb285-1a7a-4589-9e14-c507993683cb",
+								"exec": [
+									"// test if code==200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// test if illustrate content-type\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"var schema = {\r",
+									"    \"type\":\"object\",\r",
+									"    \"properties\": {\r",
+									"        \"currentConfirmedCount\": {\"type\":\"integer\"},\r",
+									"        \"confirmedCount\": {\"type\":\"integer\"},\r",
+									"        \"curedCount\": {\"type\":\"integer\"},\r",
+									"        \"deadCount\": {\"type\":\"integer\"},\r",
+									"        \"currentConfirmedIncr\": {\"type\":\"integer\"},\r",
+									"        \"confirmedIncr\": {\"type\":\"integer\"},\r",
+									"        \"curedIncr\": {\"type\":\"integer\"},\r",
+									"        \"deadIncr\": {\"type\":\"integer\"}\r",
+									"    },\r",
+									"    \"additionalProperties\":true,\r",
+									"    \"required\":[\"currentConfirmedCount\",\"confirmedCount\",\"curedCount\",\"deadCount\",\"currentConfirmedIncr\",\"curedIncr\",\"deadIncr\"]\r",
+									"};\r",
+									"\r",
+									"\r",
+									"pm.test('Global outline data is complete and valid', function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+									"    console.log(tv4.validate(jsonData, schema));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://119.3.185.241:8080/getOutlineData?area=global",
+							"protocol": "http",
+							"host": [
+								"119",
+								"3",
+								"185",
+								"241"
+							],
+							"port": "8080",
+							"path": [
+								"getOutlineData"
+							],
+							"query": [
+								{
+									"key": "area",
+									"value": "global"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "?area=inland",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "54977d66-8ca5-4171-bcdd-d0fed59bf113",
+								"exec": [
+									"// test if code==200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// test if illustrate content-type\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"var schema = {\r",
+									"    \"type\":\"object\",\r",
+									"    \"properties\": {\r",
+									"        \"currentConfirmedCount\": {\"type\":\"string\"},\r",
+									"        \"confirmedCount\": {\"type\":\"string\"},\r",
+									"        \"curedCount\": {\"type\":\"string\"},\r",
+									"        \"seriousCount\": {\"type\":\"string\"},\r",
+									"        \"currentConfirmedIncr\": {\"type\":\"string\"},\r",
+									"        \"suspectedIncr\": {\"type\":\"string\"},\r",
+									"        \"seriousIncr\": {\"type\":\"string\"},\r",
+									"        \"confirmedIncr\": {\"type\":\"string\"},\r",
+									"        \"curedIncr\": {\"type\":\"string\"},\r",
+									"        \"deadCount\": {\"type\":\"string\"},\r",
+									"        \"deadIncr\": {\"type\":\"string\"},\r",
+									"        \"suspectedCount\": {\"type\":\"string\"}\r",
+									"    },\r",
+									"    \"additionalProperties\":true,\r",
+									"    \"required\":[\"currentConfirmedCount\",\"confirmedCount\",\"curedCount\",\"seriousCount\",\"deadCount\",\"currentConfirmedIncr\",\"suspectedIncr\",\"confirmedIncr\",\"curedIncr\",\"deadIncr\",\"suspectedCount\"]\r",
+									"};\r",
+									"\r",
+									"\r",
+									"pm.test('Inland outline data is complete and valid', function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+									"    console.log(tv4.validate(jsonData, schema));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://119.3.185.241:8080/getOutlineData?area=inland",
+							"protocol": "http",
+							"host": [
+								"119",
+								"3",
+								"185",
+								"241"
+							],
+							"port": "8080",
+							"path": [
+								"getOutlineData"
+							],
+							"query": [
+								{
+									"key": "area",
+									"value": "inland"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "getCommunityData",
+			"item": [
+				{
+					"name": "?province=&city=&district=",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0202a4f6-9409-45c9-a48f-d38271f200aa",
+								"exec": [
+									"// print log to check if input data is right\r",
+									"pm.environment.set(\"province\", data.province);\r",
+									"pm.environment.set(\"city\", data.city);\r",
+									"pm.environment.set(\"county\", data.county);\r",
+									"console.log(data)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6282ffc-87c3-4384-a7b8-86873733ac2f",
+								"exec": [
+									"// test if code==200\r",
+									"pm.test(\"Status code is 200 or 250  \", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// test if illustrate content-type\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"var schema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": {\r",
+									"        \"type\":\"object\",\r",
+									"        \"properties\": {\r",
+									"            \"locale\": {\"type\":\"string\"},\r",
+									"            \"address\": {\"type\":\"string\"},\r",
+									"            \"lng\": {\"type\":\"string\"},\r",
+									"            \"lat\": {\"type\":\"string\"},\r",
+									"            \"source\": {\"type\":[\"string\",\"null\"]}\r",
+									"        },\r",
+									"        \"additionalProperties\":true,\r",
+									"        \"required\":[\"locale\",\"address\",\"lng\",\"lat\",\"source\"]\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"\r",
+									"\r",
+									"var code=JSON.parse(responseBody).code;\r",
+									"console.log(code)\r",
+									"var isCode200 = code==200; \r",
+									"\r",
+									"(isCode200 ? pm.test : pm.test.skip)(\"API-Json code is 200, msg is success\", () => {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('success');\r",
+									"});\r",
+									"\r",
+									"(isCode200 ? pm.test : pm.test.skip)(\"API-Json code is 200, items are complete\", () => {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData.newslist, schema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"var isCode250 = code==250;\r",
+									"\r",
+									"(isCode250 ? pm.test : pm.test.skip)(\"API-Json code is 250, msg is \\\"show not complete\\\"\", () => {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('数据返回为空');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://119.3.185.241:8080/getCommunityData?province={{province}}&city={{city}}&district={{county}}",
+							"protocol": "http",
+							"host": [
+								"119",
+								"3",
+								"185",
+								"241"
+							],
+							"port": "8080",
+							"path": [
+								"getCommunityData"
+							],
+							"query": [
+								{
+									"key": "province",
+									"value": "{{province}}"
+								},
+								{
+									"key": "city",
+									"value": "{{city}}"
+								},
+								{
+									"key": "district",
+									"value": "{{county}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ShareOrder",
+			"item": [
+				{
+					"name": "getItemList",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "34ce6844-e234-41f1-9fe4-ae70ec3629f5",
+								"exec": [
+									"// test if code==200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// test if illustrate content-type\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"var schema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": {\r",
+									"        \"type\":\"object\",\r",
+									"        \"properties\": {\r",
+									"            \"name\": {\"type\":\"string\"},\r",
+									"            \"items\": {\r",
+									"                \"type\":\"array\",\r",
+									"                \"items\":{\r",
+									"                    \"type\":[\"object\",\"null\"],\r",
+									"                    \"properties\":{\r",
+									"                        \"name\":\"string\",\r",
+									"                        \"iconUrl\":\"string\"\r",
+									"                    }\r",
+									"                }\r",
+									"            }\r",
+									"        },\r",
+									"        \"additionalProperties\":true\r",
+									"        // \"required\":[\"\",\"address\",\"lng\",\"lat\",\"source\"]\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"\r",
+									"var isCode200 = responseCode.code == 200;\r",
+									"\r",
+									"(isCode200 ? pm.test : pm.test.skip)(\"status code is 200, items are complete\", () => {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData.itemList, schema)).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://119.3.185.241:8080/getItemList",
+							"protocol": "http",
+							"host": [
+								"119",
+								"3",
+								"185",
+								"241"
+							],
+							"port": "8080",
+							"path": [
+								"getItemList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "confirmOrder/postparam",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1bcdfa0c-5afe-455b-a668-0495c320579e",
+								"exec": [
+									"// print log to check if input data is right\r",
+									"pm.environment.set(\"target\", data.target);\r",
+									"pm.environment.set(\"userid\", data.userid);\r",
+									"pm.environment.set(\"itemid\", data.itemid);\r",
+									"pm.environment.set(\"quantity\", data.quantity);\r",
+									"console.log(data)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "targetLocation",
+									"value": "2222",
+									"type": "text"
+								},
+								{
+									"key": "userId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "itemList",
+									"value": "[{\"itemId\":232323,\"quantity\":6},{\"itemId\":111,\"quantity\":3}]",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://119.3.185.241:8080/confirmOrder",
+							"protocol": "http",
+							"host": [
+								"119",
+								"3",
+								"185",
+								"241"
+							],
+							"port": "8080",
+							"path": [
+								"confirmOrder"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "QueryEpidemic",
+			"item": [
+				{
+					"name": "quiryhospital?city=",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1cdc3480-db17-4f25-8bef-655ad65767da",
+								"exec": [
+									"pm.environment.set(\"qCity\", data.qCity);\r",
+									"console.log(data)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "cacfd50d-2ff2-47e1-b5e7-73f8275a5acb",
+								"exec": [
+									"// test if code==200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// test if illustrate content-type\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"var schema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": {\r",
+									"        \"type\":\"object\",\r",
+									"        \"properties\": {\r",
+									"            \"name\":{\"type\":\"string\"},\r",
+									"            \"location\":{\r",
+									"                \"type\":\"object\",\r",
+									"                \"properties\":{\r",
+									"                    \"lat\":{\"type\":\"number\"},\r",
+									"                    \"lng\":{\"type\":\"number\"}\r",
+									"                }\r",
+									"            },\r",
+									"            \"address\":{\"type\":\"string\"},\r",
+									"            \"province\":{\"type\":\"string\"},\r",
+									"            \"city\":{\"type\":\"string\"},\r",
+									"            \"area\":{\"type\":\"string\"},\r",
+									"            \"street_id\":{\"type\":\"string\"},\r",
+									"            \"detail\":{\"type\":\"integer\"},\r",
+									"            \"uid\":{\"type\":\"string\"},\r",
+									"            \"telephone\":{\"type\":\"string\"}\r",
+									"        },\r",
+									"        \"additionalProperties\":true,\r",
+									"        \"required\":[\"name\",\"address\",\"location\",\"province\"]\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"var isCode200 = responseCode.code == 200;\r",
+									"\r",
+									"var status=JSON.parse(responseBody).status;\r",
+									"console.log(status)\r",
+									"var isStatus0 = status==0; \r",
+									"var isStatus401 = status==401;\r",
+									"\r",
+									"\r",
+									"(isCode200 && isStatus0 ? pm.test : pm.test.skip)(\"status code is 0, items are complete\", () => {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData.results, schema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"(isCode200 && isStatus0 ? pm.test : pm.test.skip)(\"status code is 0, message is ok\", () => {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('ok');\r",
+									"});\r",
+									"\r",
+									"(isCode200 && isStatus401 ? pm.test : pm.test.skip)(\"status code is 401, restrict access because concurrency is more than allowed\", () => {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('当前并发量已经超过约定并发配额，限制访问');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://119.3.185.241:8080/quiryhospital?city={{qCity}}",
+							"protocol": "http",
+							"host": [
+								"119",
+								"3",
+								"185",
+								"241"
+							],
+							"port": "8080",
+							"path": [
+								"quiryhospital"
+							],
+							"query": [
+								{
+									"key": "city",
+									"value": "{{qCity}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "quirymedicine?city=",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2774636e-f4e4-407b-856b-dd4144e2cd47",
+								"exec": [
+									"// test if code==200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// test if illustrate content-type\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"var schema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": {\r",
+									"        \"type\":\"object\",\r",
+									"        \"properties\": {\r",
+									"            \"name\":{\"type\":\"string\"},\r",
+									"            \"location\":{\r",
+									"                \"type\":\"object\",\r",
+									"                \"properties\":{\r",
+									"                    \"lat\":{\"type\":\"number\"},\r",
+									"                    \"lng\":{\"type\":\"number\"}\r",
+									"                }\r",
+									"            },\r",
+									"            \"address\":{\"type\":\"string\"},\r",
+									"            \"province\":{\"type\":\"string\"},\r",
+									"            \"city\":{\"type\":\"string\"},\r",
+									"            \"area\":{\"type\":\"string\"},\r",
+									"            \"street_id\":{\"type\":\"string\"},\r",
+									"            \"detail\":{\"type\":\"integer\"},\r",
+									"            \"uid\":{\"type\":\"string\"},\r",
+									"            \"telephone\":{\"type\":\"string\"}\r",
+									"        },\r",
+									"        \"additionalProperties\":true,\r",
+									"        \"required\":[\"name\",\"address\",\"location\",\"province\"]\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"var isCode200 = responseCode.code == 200;\r",
+									"\r",
+									"var status=JSON.parse(responseBody).status;\r",
+									"console.log(status)\r",
+									"var isStatus0 = status==0; \r",
+									"var isStatus401 = status==401;\r",
+									"\r",
+									"\r",
+									"(isCode200 && isStatus0 ? pm.test : pm.test.skip)(\"status code is 0, items are complete\", () => {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData.results, schema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"(isCode200 && isStatus0 ? pm.test : pm.test.skip)(\"status code is 0, message is ok\", () => {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('ok');\r",
+									"});\r",
+									"\r",
+									"(isCode200 && isStatus401 ? pm.test : pm.test.skip)(\"status code is 401, restrict access because concurrency is more than allowed\", () => {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('当前并发量已经超过约定并发配额，限制访问');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c39dac2e-a8f6-45d3-a23f-7420ccc8d7bf",
+								"exec": [
+									"pm.environment.set(\"qCity\", data.qCity);\r",
+									"console.log(data)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://119.3.185.241:8080/quirymedicine?city={{qCity}}",
+							"protocol": "http",
+							"host": [
+								"119",
+								"3",
+								"185",
+								"241"
+							],
+							"port": "8080",
+							"path": [
+								"quirymedicine"
+							],
+							"query": [
+								{
+									"key": "city",
+									"value": "{{qCity}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "quirymask?number=",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8b78cccc-3ef2-400f-9078-95d29daa5c04",
+								"exec": [
+									"pm.environment.set(\"masknumber\", data.masknumber);\r",
+									"console.log(data)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://119.3.185.241:8080/quirymask?number=沪械注准20172630093",
+							"protocol": "http",
+							"host": [
+								"119",
+								"3",
+								"185",
+								"241"
+							],
+							"port": "8080",
+							"path": [
+								"quirymask"
+							],
+							"query": [
+								{
+									"key": "number",
+									"value": "沪械注准20172630093"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
 			"protocolProfileBehavior": {}
 		}
 	],
