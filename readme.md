@@ -209,6 +209,57 @@
   - 默认是以`COVID19` 为关键字的 50 条新闻
   - 新闻条目内部有具体新闻的URL，该URL可用于点击查看详细页面
   - 新闻条目有图片链接
+  
+- response格式：
+
+  ```json
+  {
+    "_type": "News",
+    "readLink": "https://api.cognitive.microsoft.com/api/v7/news/search?q=COVID19",
+    "queryContext": {
+      "originalQuery": "COVID19",
+      "adultIntent": false
+    },
+    "totalEstimatedMatches": 71100,
+    "sort": [
+      {
+        "name": "最佳匹配",
+        "id": "relevance",
+        "isSelected": true,
+        "url": "https://api.cognitive.microsoft.com/api/v7/news/search?q=COVID19"
+      },
+      {
+        "name": "最新发布",
+        "id": "date",
+        "isSelected": false,
+        "url": "https://api.cognitive.microsoft.com/api/v7/news/search?q=COVID19&sortby=date"
+      }
+    ],
+    "value": [
+      {
+        "name": "COVID-19 sigue siendo emergencia de salud pública de importancia internacional",
+        "url": "http://spanish.china.org.cn/txt/2020-05/03/content_76003460.htm",
+        "image": {
+          "thumbnail": {
+            "contentUrl": "https://www.bing.com/th?id=ON.2EE49CDD1C30976F5087789B8ABA0E83&pid=News",
+            "width": 320,
+            "height": 192
+          }
+        },
+        "description": "El director general de la Organización Mundial de la Salud (OMS), Tedros Adhanom Ghebreyesus, dijo hoy que el brote de la COVID-19 sigue constituyendo una emergencia de salud pública de importancia in",
+        "provider": [
+          {
+            "_type": "Organization",
+            "name": "China Internet Information Center"
+          }
+        ],
+        "datePublished": "2020-05-03T04:29:00.0000000Z"
+      }
+    ]
+  }
+  ```
+
+  
 
 #### 关键字检索的数据请求
 
@@ -228,3 +279,194 @@
 	"count":"10"
 }
 ```
+
+### 邻里拼单
+
+#### 获取拼单主页面的物品栏
+
+- GET方法：```/getItemList```
+
+- 无参数
+
+- response格式：
+
+  ```json
+  {
+        "itemList":[
+           	{
+                "name": "吃的",
+                "items": [
+                    {
+                        "name": "小火锅",
+                        "iconUrl": "http://img.kiwifruits.cn/classify/1/1.jpg"
+                    }
+        			]
+        		}
+        ]
+  }
+  ```
+
+#### 发起一个订单
+
+- POST方法：```/confirmOrder```
+- 参数：
+  - Param：
+    - targetLocation：地址，string
+    - userId：用户id，string
+    - itemList: 一个JsonArray，最好放到body里传。其格式为： ```[{"itemId":232323,"quantity":6},{"itemId":111,"quantity":3}]```
+  - postman中测试方法如下：
+  - ![1589716900352](C:\Users\Kfor\AppData\Roaming\Typora\typora-user-images\1589716900352.png)
+  - ![1589716914496](C:\Users\Kfor\AppData\Roaming\Typora\typora-user-images\1589716914496.png)
+
+- 返回：
+
+  - ```
+    {
+      "code": 200,
+      "status": "success"
+    }
+    ```
+
+  - 可以观察数据库中的变化（数据库配置在后端application.properties中）
+
+
+
+### 防疫查询
+
+#### 获取附近医院位置
+
+- GET方法：
+  - URL示例：http://localhost:8080/quiryhospital?city=杭州
+  - 参数：`city`为当前地理位置所在的地级市以及直辖市(例如：杭州，背景，上海等)，且在url中，参数city为中文
+
+- 返回值
+
+  ```json
+  {
+      "status":0,
+      "message":"ok",
+      "results":[
+          {
+              "name":string,
+              "location":{
+                  "lat":float,
+                  "lng":float
+              },
+              "address":string,
+              "province":string,
+              "city":string,
+              "area":string,
+              "street_id":string,
+              "telephone":string,
+              "detail":int,
+              "uid":string
+          },
+          ...
+      ]
+  }
+  ```
+
+#### 获取附近药店的位置
+
+- GET方法：
+  - URL示例：http://localhost:8080/quirymedicine?city=杭州
+  - 参数：`city`为当前地理位置所在的地级市以及直辖市(例如：杭州，背景，上海等)，且在url中，参数city为中文
+
+- 返回值
+
+```json
+  {
+      "status":0,
+      "message":"ok",
+      "results":[
+          {
+              "name":string,
+              "location":{
+                  "lat":float,
+                  "lng":float
+              },
+              "address":string,
+              "province":string,
+              "city":string,
+              "area":string,
+              "street_id":string,
+              "telephone":string,
+              "detail":int,
+              "uid":string
+          },
+          ...
+      ]
+  }
+```
+
+####   查询口罩真伪
+
+- GET方法：
+
+  - URL示例：http://localhost:8080/quirymask?number=沪械注准20172630093
+  - 参数：number为口罩的编号
+
+- 返回值:
+
+  ```json
+  {
+    "索引条件": {
+      "索引字符串": "沪械注准20172630093"
+    },
+  "索引状态": "一切都如您的神机妙算，天下均在您的掌握之中",
+    "索引总数量": "1",
+    "索引总页数": "0",
+    "索引页容量": "10",
+    "索引页序号": "1",
+    "索引实体信息": [
+      {
+        "国产医疗器械产品批准文号": "沪械注准20172630093",
+        "国产医疗器械产品注册人名称": "上海天垠贸易发展有限公司",
+        "国产医疗器械产品注册人名称_精简": "上海天垠贸易发展有限公司",
+        "国产医疗器械产品注册人住所地址": "上海市浦东新区历城路70号甲室",
+        "国产医疗器械产品注册人住所地址_格式标准化": "上海市浦东新区历城路|70|甲",
+        "国产医疗器械产品注册人住所地址_国家": "中国",
+        "国产医疗器械产品注册人住所地址_省份": "上海市",
+        "国产医疗器械产品注册人住所地址_城市": "上海市",
+        "国产医疗器械产品注册人住所地址_区域": "浦东新区",
+        "国产医疗器械产品注册人住所地址_GPS": "121.492369,31.176144",
+        "国产医疗器械产品注册人住所地址_国家行政编码": "310115",
+        "国产医疗器械产品注册人生产地址": "上海市浦东新区历城路70号甲室",
+        "国产医疗器械产品注册人生产地址_格式标准化": "上海市浦东新区历城路|70|甲",
+        "国产医疗器械产品注册人生产地址_国家": "中国",
+        "国产医疗器械产品注册人生产地址_省份": "上海市",
+        "国产医疗器械产品注册人生产地址_城市": "上海市",
+        "国产医疗器械产品注册人生产地址_区域": "浦东新区",
+        "国产医疗器械产品注册人生产地址_GPS": "121.492369,31.176144",
+        "国产医疗器械产品注册人生产地址_国家行政编码": "310115",
+        "国产医疗器械产品代理人名称": "",
+        "国产医疗器械产品代理人名称_精简": "",
+        "国产医疗器械产品代理人住所地址": "",
+        "国产医疗器械产品代理人住所地址_格式标准化": "",
+        "国产医疗器械产品代理人住所地址_国家": "",
+        "国产医疗器械产品代理人住所地址_省份": "",
+        "国产医疗器械产品代理人住所地址_城市": "",
+        "国产医疗器械产品代理人住所地址_区域": "",
+        "国产医疗器械产品代理人住所地址_GPS": "",
+        "国产医疗器械产品代理人住所地址_国家行政编码": "",
+        "国产医疗器械产品名称": "定制式活动义齿",
+        "国产医疗器械产品名称_精简": "定制式活动义齿",
+        "国产医疗器械产品型号与规格": "见附表",
+        "国产医疗器械产品机构与组成": "活动义齿由基托、人工牙、固位体和连接体组成，根据医生的设计，采用有效注册证的主体及辅助齿科材料加工而成。主要技术指标：1. 修复体中除组织面外，假牙、基托、卡环及连接体均应高度抛光，表面粗糙度RA≤0.025；2. 修复体的组织面不得存在残余石膏；3. 基托边缘应该与石膏模型相贴合，无明显晃动、翘动；4. 修复体的制作应符合口腔临床医生的设计要求；5. 产品表面污染菌应≤200CFU/G，致病菌不得检出。",
+        "国产医疗器械产品适用范围": "根据医生的设计制作，用作牙体、牙列的缺失或缺损的修复。",
+        "国产医疗器械产品其他内容": "",
+        "国产医疗器械产品批准日期": "20170208",
+        "国产医疗器械产品批准有效期至": "20220207",
+        "国产医疗器械产品标准": "",
+        "国产医疗器械产品变更日期": "20171204",
+        "国产医疗器械产品主要组成成分（体外诊断试剂）": "活动义齿由基托、人工牙、固位体和连接体组成，根据医生的设计，采用有效注册证的主体及辅助齿科材料加工而成。主要技术指标：1. 修复体中除组织面外，假牙、基托、卡环及连接体均应高度抛光，表面粗糙度RA≤0.025；2. 修复体的组织面不得存在残余石膏；3. 基托边缘应该与石膏模型相贴合，无明显晃动、翘动；4. 修复体的制作应符合口腔临床医生的设计要求；5. 产品表面污染菌应≤200CFU/G，致病菌不得检出。",
+        "国产医疗器械产品预期用途（体外诊断试剂）": "",
+        "国产医疗器械产品产品储存条件及有效期（体外诊断试剂）": "/",
+        "国产医疗器械产品批准机构": "上海市食品药品监督管理局",
+        "数据编码": "000A24C6B3076B39E54DCB9DFD0554EC"
+      }
+    ]
+  }
+  ```
+  
+  

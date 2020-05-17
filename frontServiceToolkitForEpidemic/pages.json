@@ -27,9 +27,30 @@
 			}
 		},
 		{
-			"path": "pages/hot/hot",
+			"path": "pages/crowdingOrdering/index",
 			"style": {
 				"navigationBarTitleText": "邻里拼团",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/crowdingOrdering/fruit",
+			"style": {
+				"navigationBarTitleText": "邻里拼团-水果蔬菜",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/crowdingOrdering/medicine",
+			"style": {
+				"navigationBarTitleText": "邻里拼团-医用物品",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/crowdingOrdering/supermarket",
+			"style": {
+				"navigationBarTitleText": "邻里拼团-超市物品",
 				"enablePullDownRefresh": true
 			}
 		},
@@ -78,16 +99,42 @@
 			}
 		},
 		{
-			"path": "pages/login/login",
+			"path": "pages/center/personalInfo",
 			"style": {
-				"navigationBarTitleText": "登录"
+				"navigationBarTitleText": "个人信息"
 			}
 		},
 		{
-			"path": "pages/about/about",
-			"style": {}
+			"path": "pages/center/order",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		},
+		{
+			"path": "pages/center/collection",
+			"style": {
+				"navigationBarTitleText": "我的收藏"
+			}
+		},
+		{
+			"path": "pages/center/settings",
+			"style": {
+				"navigationBarTitleText": "设置"
+			}
+		},
+		{
+			"path": "pages/center/reflection",
+			"style": {
+				"navigationBarTitleText": "帮助与反馈"
+			}
+		},
+		{
+			"path": "pages/center/version",
+			"style": {
+				"navigationBarTitleText": "版本"
+			}
 		}
-	],
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "看图",
@@ -113,7 +160,7 @@
 				"text": "国际舆情"
 			},
 			{
-				"pagePath": "pages/hot/hot",
+				"pagePath": "pages/crowdingOrdering/index",
 				"iconPath": "static/order-0.png",
 				"selectedIconPath": "static/order-1.png",
 				"text": "邻里拼团"
@@ -129,6 +176,16 @@
 				"iconPath": "static/center-0.png",
 				"selectedIconPath": "static/center-1.png",
 				"text": "个人中心"
+			}
+		]
+	},
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
 			}
 		]
 	}

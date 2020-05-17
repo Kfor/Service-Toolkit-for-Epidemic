@@ -1,0 +1,1 @@
+<view class="index"><view class="tags"><block wx:for="{{data}}" wx:for-item="value" wx:for-index="__i0__" wx:key="key"><block><view data-event-opts="{{[['tap',[['goList',['$0'],[[['data','key',value.key]]]]]]]}}" class="tag" bindtap="__e"><image class="tag-img" src="{{value.icon}}"></image><text class="tag-text">{{value.type}}</text></view></block></block></view></view>

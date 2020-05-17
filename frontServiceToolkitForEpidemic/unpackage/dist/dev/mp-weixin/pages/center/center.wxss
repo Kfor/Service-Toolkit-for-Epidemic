@@ -1,0 +1,15 @@
+
+.logo-img {
+	width: 150rpx;
+	height: 150rpx;
+	margin-left: 50rpx;
+	border-radius: 150rpx;
+}
+.uer-name {
+	height: 60rpx;
+	line-height: 60rpx;
+	margin-left: 20rpx;
+	font-size: 43rpx;
+	color: #FFFFFF;
+}
+

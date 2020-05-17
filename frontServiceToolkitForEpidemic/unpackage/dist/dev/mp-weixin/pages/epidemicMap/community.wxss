@@ -1,0 +1,61 @@
+
+.selectList {
+	width: 700rpx;
+	margin-left: 20rpx;
+	text-align: center;
+}
+.selectBox {
+	width: 100px;
+	height: 25px;
+	margin-top: 25px;
+	margin-bottom: 5px;
+	margin-left: 25rpx;
+}
+.contentList {
+	background-color: #ffffff;
+	width: 95%;
+	margin-top: 150rpx;
+	margin-left: 2.5%;
+	text-align: center;
+	position: absolute;
+}
+.title {
+	width: 330rpx;
+	font-size: 34rpx;
+	font-weight: 700;
+	line-height: 100rpx;
+	margin-left: 120rpx;
+	margin-right: 150rpx;
+	position: relative;
+}
+.block {
+	width: 700rpx;
+	height: 100rpx;
+	text-align: center;
+}
+.col1 {
+	width: 330rpx;
+	height: 80rpx;
+	margin: 20rpx 0 20rpx 20rpx;
+	font-size: 28rpx;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	float: left;
+}
+.col2 {
+	width: 330rpx;
+	height: 80rpx;
+	margin: 20rpx 0 20rpx 20rpx;
+	font-size: 25rpx;
+	float: left;
+}
+.col3 {
+	width: 180rpx;
+	height: 80rpx;
+	margin: 20rpx 0 20rpx 20rpx;
+	font-size: 25rpx;
+	float: left;
+}
+
