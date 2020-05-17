@@ -528,19 +528,24 @@ var _default =
   created: function created() {
     this.area = this.itemList[this.index].id;
   },
-  mounted: function mounted() {//template挂载到页面时调用
+  onReady: function onReady() {var _this = this; //template挂载到页面时调用
+    console.log("onready");
     this.getMapData();
 
     this.getOutlineData(); //执行getOutlineData方法
     this.mycharts = _echarts.default.init(this.$refs.mapbox);
     // 初始化echarts
-    this.mycharts.setOption(option);
+    this.$nextTick(function () {
+
+      _this.mycharts.setOption(option);
+    });
+
     //	console.log('mapList',this.mapList);
     //	console.log('mapdata',this.mapData);
 
   },
   methods: {
-    getMapData: function getMapData() {var _this = this;
+    getMapData: function getMapData() {var _this2 = this;
       uni.request({
         url: this.$serverUrl + '/getMapData?area=' + this.area,
         //method: 'GET',
@@ -549,30 +554,30 @@ var _default =
             console.log('失败!');
           }
           console.log('ret', ret);
-          _this.mapList = ';';
-          _this.mapList = ret.data.newslist;
+          _this2.mapList = ';';
+          _this2.mapList = ret.data.newslist;
 
-          _this.mapData = [];
-          for (var item in _this.mapList) {
+          _this2.mapData = [];
+          for (var item in _this2.mapList) {
             //	console.log('item',this.mapList[item]);
-            if (_this.area == 'inland')
-            _this.mapData[item] = {
-              name: _this.mapList[item].provinceShortName,
-              value: _this.mapList[item].currentConfirmedCount };else
+            if (_this2.area == 'inland')
+            _this2.mapData[item] = {
+              name: _this2.mapList[item].provinceShortName,
+              value: _this2.mapList[item].currentConfirmedCount };else
 
-            if (_this.area == 'global')
-            _this.mapData[item] = {
-              name: _this.mapList[item].provinceName,
-              value: _this.mapList[item].currentConfirmedCount };
+            if (_this2.area == 'global')
+            _this2.mapData[item] = {
+              name: _this2.mapList[item].provinceName,
+              value: _this2.mapList[item].currentConfirmedCount };
 
           }
-          option.series[0].data = _this.mapData;
+          option.series[0].data = _this2.mapData;
           //	console.log('getList',this.mapData);
-          if (_this.area == 'inland')
+          if (_this2.area == 'inland')
           option.series[0].map = 'china';else
-          if (_this.area == 'global')
+          if (_this2.area == 'global')
           option.series[0].map = 'world';
-          _this.mycharts.setOption(option);
+          _this2.mycharts.setOption(option);
           //	console.log('getList',this.mapList);
           //console.log('getdata',this.mapData);
         } });
@@ -580,7 +585,7 @@ var _default =
       //		
     },
 
-    getOutlineData: function getOutlineData() {var _this2 = this;
+    getOutlineData: function getOutlineData() {var _this3 = this;
       console.log(this.$serverUrl + '/getOutlineData?area=' + this.area);
       uni.request({
         url: this.$serverUrl + '/getOutlineData?area=' + this.area,
@@ -591,17 +596,17 @@ var _default =
             console.log('失败!');
           }
 
-          _this2.numList = ret.data;
+          _this3.numList = ret.data;
           console.log('data', ret.data);
-          _this2.currentConfirmedCount = ret.data.currentConfirmedCount;
-          _this2.confirmedCount = ret.data.confirmedCount;
-          _this2.curedCount = ret.data.curedCount;
-          _this2.deadCount = ret.data.deadCount;
+          _this3.currentConfirmedCount = ret.data.currentConfirmedCount;
+          _this3.confirmedCount = ret.data.confirmedCount;
+          _this3.curedCount = ret.data.curedCount;
+          _this3.deadCount = ret.data.deadCount;
 
-          _this2.currentConfirmedIncr = ret.data.currentConfirmedIncr;
-          _this2.confirmedIncr = ret.data.confirmedIncr;
-          _this2.curedIncr = ret.data.curedIncr;
-          _this2.deadIncr = ret.data.deadIncr;
+          _this3.currentConfirmedIncr = ret.data.currentConfirmedIncr;
+          _this3.confirmedIncr = ret.data.confirmedIncr;
+          _this3.curedIncr = ret.data.curedIncr;
+          _this3.deadIncr = ret.data.deadIncr;
         } });
 
 

@@ -280,6 +280,57 @@
 }
 ```
 
+### 邻里拼单
+
+#### 获取拼单主页面的物品栏
+
+- GET方法：```/getItemList```
+
+- 无参数
+
+- response格式：
+
+  ```json
+  {
+        "itemList":[
+           	{
+                "name": "吃的",
+                "items": [
+                    {
+                        "name": "小火锅",
+                        "iconUrl": "http://img.kiwifruits.cn/classify/1/1.jpg"
+                    }
+        			]
+        		}
+        ]
+  }
+  ```
+
+#### 发起一个订单
+
+- POST方法：```/confirmOrder```
+- 参数：
+  - Param：
+    - targetLocation：地址，string
+    - userId：用户id，string
+    - itemList: 一个JsonArray，最好放到body里传。其格式为： ```[{"itemId":232323,"quantity":6},{"itemId":111,"quantity":3}]```
+  - postman中测试方法如下：
+  - ![1589716900352](C:\Users\Kfor\AppData\Roaming\Typora\typora-user-images\1589716900352.png)
+  - ![1589716914496](C:\Users\Kfor\AppData\Roaming\Typora\typora-user-images\1589716914496.png)
+
+- 返回：
+
+  - ```
+    {
+      "code": 200,
+      "status": "success"
+    }
+    ```
+
+  - 可以观察数据库中的变化（数据库配置在后端application.properties中）
+
+
+
 ### 防疫查询
 
 #### 获取附近医院位置

@@ -396,19 +396,24 @@
 		created(){
 			this.area=this.itemList[this.index].id;
 		},
-		mounted(){  //template挂载到页面时调用
+		onReady(){  //template挂载到页面时调用
+			console.log("onready");
 			this.getMapData();
-		
-		    this.getOutlineData(); //执行getOutlineData方法
+					
+			this.getOutlineData(); //执行getOutlineData方法
 			this.mycharts = echarts.init(this.$refs.mapbox);
 			    // 初始化echarts
-			this.mycharts.setOption(option)
+			this.$nextTick(()=>{
+				
+				this.mycharts.setOption(option)
+			});
+			
 		//	console.log('mapList',this.mapList);
 		//	console.log('mapdata',this.mapData);
 			
 		},
 		methods: {
-			getMapData(){
+			getMapData:function(){
 				uni.request({
 					url: this.$serverUrl + '/getMapData?area=' + this.area,
 					//method: 'GET',
@@ -448,7 +453,7 @@
 		//		
 			},
 			
-			getOutlineData() {
+			getOutlineData:function() {
 				console.log(this.$serverUrl + '/getOutlineData?area=' + this.area);
 				uni.request({
 					url: this.$serverUrl + '/getOutlineData?area=' + this.area,
@@ -475,12 +480,12 @@
 				});
 			},
 			
-			goCommunity() {
+			goCommunity:function() {
 				uni.navigateTo({
 					url: '/pages/epidemicMap/community'
 				});
 			},
-			goGraph() {
+			goGraph:function() {
 				uni.navigateTo({
 					url: '/pages/epidemicMap/graph'
 				});
