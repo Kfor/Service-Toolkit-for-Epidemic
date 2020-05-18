@@ -609,7 +609,7 @@
 								"id": "a6282ffc-87c3-4384-a7b8-86873733ac2f",
 								"exec": [
 									"// test if code==200\r",
-									"pm.test(\"Status code is 200 or 250  \", function () {\r",
+									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
@@ -784,12 +784,35 @@
 							"script": {
 								"id": "1bcdfa0c-5afe-455b-a668-0495c320579e",
 								"exec": [
-									"// print log to check if input data is right\r",
-									"pm.environment.set(\"target\", data.target);\r",
-									"pm.environment.set(\"userid\", data.userid);\r",
-									"pm.environment.set(\"itemid\", data.itemid);\r",
-									"pm.environment.set(\"quantity\", data.quantity);\r",
-									"console.log(data)"
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c692ed73-0c7e-42b4-89df-29a810b94774",
+								"exec": [
+									"// test if code==200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// test if illustrate content-type\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Json ok is 200\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Json msg is success\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -803,18 +826,24 @@
 							"formdata": [
 								{
 									"key": "targetLocation",
-									"value": "2222",
+									"value": "{{$randomCity}}",
 									"type": "text"
 								},
 								{
 									"key": "userId",
-									"value": "1",
+									"value": "{{$randomUserName}}",
 									"type": "text"
 								},
 								{
 									"key": "itemList",
-									"value": "[{\"itemId\":232323,\"quantity\":6},{\"itemId\":111,\"quantity\":3}]",
+									"value": "[{\"itemId\":{{$randomInt}},\"quantity\":{{$randomInt}}}]",
 									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							],
 							"options": {
@@ -1076,6 +1105,49 @@
 								"exec": [
 									"pm.environment.set(\"masknumber\", data.masknumber);\r",
 									"console.log(data)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "18e5564c-c461-49ce-ba8e-36a46a60e0b8",
+								"exec": [
+									"// test if code==200\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// test if illustrate content-type\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"var schema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": {\r",
+									"        \"type\":\"object\",\r",
+									"        \"properties\": {\r",
+									"            \"国产医疗器械产品批准文号\": {\"type\":\"string\"},\r",
+									"            \"国产医疗器械产品注册人名称\": {\"type\":\"string\"},\r",
+									"            \"国产医疗器械产品注册人名称_精简\": {\"type\":\"string\"},\r",
+									"            \"国产医疗器械产品注册人住所地址\": {\"type\":\"string\"},\r",
+									"            \"国产医疗器械产品批准日期\": {\"type\":\"string\"},\r",
+									"            \"国产医疗器械产品批准有效期至\": {\"type\":\"string\"},\r",
+									"            \"国产医疗器械产品变更日期\": {\"type\":\"string\"},\r",
+									"            \"国产医疗器械产品批准机构\": {\"type\":\"string\"}\r",
+									"        },\r",
+									"        \"additionalProperties\":true\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"\r",
+									"pm.test('Items of every provinces are complete and legal', function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData.索引实体信息, schema)).to.be.true;\r",
+									"    console.log(tv4.validate(jsonData.索引实体信息, schema));\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
