@@ -108,6 +108,8 @@
 							"script": {
 								"id": "2f476741-7ec5-43f5-845b-e4ec6b61fb84",
 								"exec": [
+									"console.log(responseBody)\r",
+									"\r",
 									"// test if code==200\r",
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -299,23 +301,9 @@
 					"name": "getNews/querybody",
 					"event": [
 						{
-							"listen": "prerequest",
-							"script": {
-								"id": "106925a1-d95c-4fff-870b-0370e6522bad",
-								"exec": [
-									"// print log to check if input data is right\r",
-									"pm.environment.set(\"queryKey\", String(data.queryKey));\r",
-									"pm.environment.set(\"mkt\", data.mkt);\r",
-									"pm.environment.set(\"newsCount\", data.newsCount);\r",
-									"console.log(data)"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
 							"listen": "test",
 							"script": {
-								"id": "ac508f3d-cd43-4201-9de0-0b174fe9480d",
+								"id": "4454ddb0-27ad-4dd5-81c7-99102f2e6182",
 								"exec": [
 									"console.log(responseBody)\r",
 									"// test if code==200\r",
@@ -352,13 +340,6 @@
 									"                }\r",
 									"            },\r",
 									"            \"description\": {\"type\":\"string\"},\r",
-									"            // \"provider\": {\r",
-									"            //     \"type\":\"object\",\r",
-									"            //     \"properties\":{\r",
-									"            //         \"_type\":{\"type\":\"string\"},\r",
-									"            //         \"name\":{\"type\":\"string\"}\r",
-									"            //     }\r",
-									"            // },\r",
 									"            \"datePublished\":{\"type\":\"string\"}\r",
 									"        },\r",
 									"        \"additionalProperties\":true,\r",
@@ -380,6 +361,20 @@
 									"});\r",
 									"\r",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7c8021a0-e91b-4289-8901-6e39ebdd05da",
+								"exec": [
+									"// print log to check if input data is right\r",
+									"pm.environment.set(\"queryKey\", String(data.queryKey));\r",
+									"pm.environment.set(\"mkt\", data.mkt);\r",
+									"pm.environment.set(\"newsCount\", data.newsCount);\r",
+									"console.log(data)"
 								],
 								"type": "text/javascript"
 							}
@@ -631,7 +626,7 @@
 									"            \"source\": {\"type\":[\"string\",\"null\"]}\r",
 									"        },\r",
 									"        \"additionalProperties\":true,\r",
-									"        \"required\":[\"locale\",\"address\",\"lng\",\"lat\",\"source\"]\r",
+									"        \"required\":[\"locale\",\"address\",\"lng\",\"lat\"]\r",
 									"    }\r",
 									"};\r",
 									"\r",
@@ -1103,7 +1098,7 @@
 							"script": {
 								"id": "8b78cccc-3ef2-400f-9078-95d29daa5c04",
 								"exec": [
-									"pm.environment.set(\"masknumber\", data.masknumber);\r",
+									"pm.environment.set(\"Mnumber\", data.Mnumber);\r",
 									"console.log(data)"
 								],
 								"type": "text/javascript"
@@ -1124,6 +1119,11 @@
 									"    pm.response.to.have.header(\"Content-Type\");\r",
 									"});\r",
 									"\r",
+									"\r",
+									"var num=JSON.parse(responseBody).索引总数量;\r",
+									"var nodata = num==0; \r",
+									"console.log(nodata)\r",
+									"\r",
 									"var schema = {\r",
 									"    \"type\": \"array\",\r",
 									"    \"items\": {\r",
@@ -1143,10 +1143,15 @@
 									"};\r",
 									"\r",
 									"\r",
-									"pm.test('Items of every provinces are complete and legal', function () {\r",
+									"(nodata?pm.test.skip:pm.test)('items are complete', function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(tv4.validate(jsonData.索引实体信息, schema)).to.be.true;\r",
 									"    console.log(tv4.validate(jsonData.索引实体信息, schema));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"(nodata?pm.test:pm.test.skip)(\"return not find data\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"没有找到任何与您索引相关的数据信息\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1155,9 +1160,16 @@
 					],
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "number",
+								"value": "\"{{Mnumber}}\"",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"url": {
-							"raw": "http://119.3.185.241:8080/quirymask?number=沪械注准20172630093",
+							"raw": "http://119.3.185.241:8080/quirymask?number={{Mnumber}}",
 							"protocol": "http",
 							"host": [
 								"119",
@@ -1172,7 +1184,7 @@
 							"query": [
 								{
 									"key": "number",
-									"value": "沪械注准20172630093"
+									"value": "{{Mnumber}}"
 								}
 							]
 						}
