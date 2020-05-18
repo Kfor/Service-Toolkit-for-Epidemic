@@ -49,7 +49,7 @@ public class NewsController {
      * @func: Used to support keyword search
      * @return: whole json data containing some useless header info, only the "value:[]" part is useful
      */
-    @PostMapping(value = "/getNews")
+    @PostMapping(value = "/getNews",consumes = "application/json;charset=UTF-8")
     private String returnKeyNews(@RequestBody Map<String, Object> requestMap) throws Exception {
         Boolean isFromDB = false;
 
