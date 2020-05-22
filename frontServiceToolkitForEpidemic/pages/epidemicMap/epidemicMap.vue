@@ -1,42 +1,54 @@
 <template>
 	<view class="map">
-		<div class="selection-div">
+		<view class="selection-div">
 			<text class="title1"> 疫情地图</text>
-			<select class="input-box" v-model="itemSelected" v-on:change="getItemSelected" style="width: 120upx">
-			<option v-for="item in itemList" v-bind:value="item.id" v-text="item.name" ></option>
-			</select>
-		</div>
-		<div class="map-img" ref="mapbox" style="width:100%;height:400px;margin:0 auto" ></div>
-		
+			<view class="input-box">
+				<picker mode="selector" :range-key="'name'" :value="index" @change="getItemSelected" :range="itemList">
+					<label>{{itemList[index].name}}</label>	
+	<!--		<option v-for="item in itemList" v-bind:value="item.id" v-text="item.name" ></option>-->
+				</picker>
+			</view>
+		</view>
+		<view style="width:100%;height:400px;margin:0 auto">
+			<div class="map-img" ref="mapbox" ></div>
+		</view>
 		<view class="outlineData" >
-			<div>
-				<div class="block">
-					<text class= "title">现存确诊</text><br>
-					<text class="data">{{this.currentConfirmedCount}}</text><br>
+			<view class="block-item">
+				<view class="block">
+					<text class= "title">现存确诊</text>
+					<text class="data">{{this.currentConfirmedCount}}</text>
+					<view class="trendData">
 					<text class="trend">较昨日增加 </text>
 					<text class="incr">{{this.currentConfirmedIncr}}</text>
-				</div>
-				<div class="block">
-					<text class= "title">累计确诊</text><br>
-					<text class="data" style="color:#af2424">{{this.confirmedCount}}</text><br>
+					</view>
+				</view>
+				<view class="block">
+					<text class= "title">累计确诊</text>
+					<text class="data" style="color:#af2424">{{this.confirmedCount}}</text>
+					<view class="trendData">
 					<text class="trend">较昨日增加 </text>
 					<text class="incr">{{this.confirmedIncr}}</text>
-				</div>
-			</div>
-			<div>
-				<div class="block">
-					<text class= "title">累计死亡</text><br>
-					<text class="data" style="color:#000000">{{this.deadCount}}</text><br>
+					</view>
+				</view>
+			</view>
+			<view class="block-item">
+				<view class="block">
+					<text class= "title">累计死亡</text>
+					<text class="data" style="color:#000000">{{this.deadCount}}</text>
+					<view class="trendData">
 					<text class="trend">较昨日增加 </text>
 					<text class="incr">{{this.deadIncr}}</text>
-				</div>
-				<div class="block">
-					<text class= "title">累计治愈</text><br>
-					<text class="data" style="color:#309f0e">{{this.curedCount}}</text><br>
-					<text class="trend">较昨日增加 </text>
-					<text class="incr">{{this.curedIncr}}</text>
-				</div>
-			</div>
+					</view>
+				</view>
+				<view class="block">
+					<text class= "title">累计治愈</text>
+					<text class="data" style="color:#309f0e">{{this.curedCount}}</text>
+					<view class="trendData">
+						<text class="trend">较昨日增加 </text>
+						<text class="incr">{{this.curedIncr}}</text>
+					</view>
+				</view>
+			</view>
 		</view>
 		
 		
@@ -361,7 +373,10 @@
 			return { 
 				showOptions: false,
 				itemList:[{name:"国内",id:'inland'},{name:"世界",id:'global'}],
-				itemSelected: 'inland',
+			//	itemList:['国内','世界'],
+				index:0,
+				area:'inland',
+				itemSelected: '国内',
 				currentConfirmedCount: 1947236,
 			//	currentConfirmedCount: '',
 				confirmedCount: 3070127,
@@ -373,29 +388,34 @@
 				deadIncr: 298,
 				numList:'',
 				mapList:'',
-				myChart:'',
+				myCharts:'',
 				mapData:[],
 				map:''
 			}
 		},
 		created(){
-			this.itemSelected = this.itemList[0].id;
+			this.area=this.itemList[this.index].id;
 		},
-		mounted(){  //template挂载到页面时调用
+		onReady(){  //template挂载到页面时调用
+			console.log("onready");
 			this.getMapData();
-		
-		    this.getOutlineData(); //执行getOutlineData方法
-			this.mycharts = echarts.init(this.$refs.mapbox)
+					
+			this.getOutlineData(); //执行getOutlineData方法
+			this.mycharts = echarts.init(this.$refs.mapbox);
 			    // 初始化echarts
-			this.mycharts.setOption(option)
+			this.$nextTick(()=>{
+				
+				this.mycharts.setOption(option)
+			});
+			
 		//	console.log('mapList',this.mapList);
 		//	console.log('mapdata',this.mapData);
 			
 		},
 		methods: {
-			getMapData(){
+			getMapData:function(){
 				uni.request({
-					url: this.$serverUrl + '/getMapData?area=' + this.itemSelected,
+					url: this.$serverUrl + '/getMapData?area=' + this.area,
 					//method: 'GET',
 					success: (ret) => {
 						if (ret.statusCode !== 200) {
@@ -408,12 +428,12 @@
 						this.mapData=[];
 						for (var item in this.mapList) { 
 						//	console.log('item',this.mapList[item]);
-							if(this.itemSelected=='inland')
+							if(this.area=='inland')
 								this.mapData[item] = {
 											name:this.mapList[item].provinceShortName,
 											value:this.mapList[item].currentConfirmedCount
 										};
-							else if(this.itemSelected=='global')
+							else if(this.area=='global')
 								this.mapData[item] = {
 											name:this.mapList[item].provinceName,
 											value:this.mapList[item].currentConfirmedCount
@@ -421,11 +441,11 @@
 						}
 						option.series[0].data = this.mapData;
 					//	console.log('getList',this.mapData);
-						if(this.itemSelected=='inland')
+						if(this.area=='inland')
 							option.series[0].map = 'china';
-						else if(this.itemSelected=='global')
+						else if(this.area=='global')
 							option.series[0].map = 'world';
-						this.mycharts.setOption(option)
+						this.mycharts.setOption(option);
 					//	console.log('getList',this.mapList);
 						//console.log('getdata',this.mapData);
 					}
@@ -433,10 +453,10 @@
 		//		
 			},
 			
-			getOutlineData() {
-				console.log(this.$serverUrl + '/getOutlineData?area=' + this.itemSelected);
+			getOutlineData:function() {
+				console.log(this.$serverUrl + '/getOutlineData?area=' + this.area);
 				uni.request({
-					url: this.$serverUrl + '/getOutlineData?area=' + this.itemSelected,
+					url: this.$serverUrl + '/getOutlineData?area=' + this.area,
 					//method: 'GET',
 					
 					success: (ret) => {
@@ -460,20 +480,23 @@
 				});
 			},
 			
-			goCommunity() {
+			goCommunity:function() {
 				uni.navigateTo({
 					url: '/pages/epidemicMap/community'
 				});
 			},
-			goGraph() {
+			goGraph:function() {
 				uni.navigateTo({
 					url: '/pages/epidemicMap/graph'
 				});
 			},
-			getItemSelected(){
-			    console.log(this.itemSelected)
+			getItemSelected:function(e){
+				this.index = e.target.value;			//将数组改变索引赋给定义的index变量
+				this.itemSelected=this.itemList[this.index];
+			    this.area=this.itemList[this.index].id;
 				this.getOutlineData();
 				this.getMapData();
+				
 			}
 		}
 		
@@ -490,38 +513,56 @@
 	.selection-div {
 		background-color: #FFFFFF;
 		height: 40px;
-		text-align: right;
+		flex-direction: row;
+		text-align: center;
 	}
 	.title1 {
 		line-height: 90upx;
 		font-size: 34upx;
 		font-weight: 700;
 		color: #000000;
-		margin-right: 20%;
+		margin-right: 10%;
 		font-family: Verdana, Geneva, Tahoma, sans-serif;
+		margin: auto;
 	}
 	
 	.input-box {
+		border-color:#080809;
 		margin-right: 25upx;
 		margin-top: 25upx;
+		margin: auto;
 	}
 	
 	.map-img {
 		background-color: #ffffff;
 	}
+	.outlineData{
+		width: 750upx;
+		margin-top: 10upx;
+		flex-direction: column;
+	}
+	
+	.block-item {
+		height: 220upx;
+		width: 750upx;
+		box-sizing: border-box;
+		flex-direction: row;
+	}
+	
 	
 	.block {
 		background-color: #FFFFFF;
 		width: 345upx;
 		height: 200upx;
-		margin: 20upx 0 20upx 20upx;
+		margin: 10upx 0upx 20upx 20upx;
+		flex-direction: column;
 		text-align: center;
 	}
 	
 	.title {
-		height: 100upx;
-		width: 60upx;
-		line-height: 90upx;
+		height: 30%;
+		width: 300upx;
+		line-height: 70upx;
 		font-size: 34upx;
 		font-weight: 700;
 		color: #000000;
@@ -530,9 +571,8 @@
 	}
 	
 	.data {
-		height: 60upx;
-		width: 60upx;
-		line-height: 50upx;
+		height: 30%;
+		width: 300upx;
 		font-size: 40upx;
 		font-weight: 700;
 		color: #f0a713;
@@ -540,23 +580,21 @@
 		font-family: texticons;
 	}
 	
+	.trendData {
+		margin:0 auto;
+	}
 	.trend {
-		height: 50upx;
-		width: 40upx;
-		line-height: 50upx;
+		height: 40upx;
 		font-size: 20upx;
 		color: #868686;
-		margin:0 auto;
 		font-family: texticons;
 	}
 	
 	.incr {
-		height: 50upx;
-		width: 40upx;
-		line-height: 50upx;
-		font-size: 25upx;
+		height: 40upx;
+		font-size: 20upx;
+		margin-left: 5upx;
 		color: #000000;
-		margin:0 auto;
 		font-family: texticons;
 	}
 	

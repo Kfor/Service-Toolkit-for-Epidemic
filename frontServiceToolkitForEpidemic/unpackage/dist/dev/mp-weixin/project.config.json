@@ -4,12 +4,11 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
-		"minified": true
+		"urlCheck": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.2",
-	"appid": "touristappid",
+	"appid": "wx078aafd73d425e7a",
 	"projectname": "Service-Toolkit-for-Epidemic",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -30,10 +29,10 @@
 			"current": 0,
 			"list": [
 				{
-					"id": 0,
-					"name": "pages/inquiry/clinic",
-					"pathName": "pages/inquiry/clinic",
-					"query": ""
+					"name": "",
+					"path": "",
+					"query": "",
+					"id": 0
 				}
 			]
 		}

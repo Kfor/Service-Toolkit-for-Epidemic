@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.search.BingNewsCondition;
-import com.example.demo.search.BingNewsSearch;
+import com.example.demo.service.search.BingNewsCondition;
+import com.example.demo.service.search.BingNewsSearch;
+import com.example.demo.utils.MyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +12,13 @@ import java.util.Map;
 
 @RestController
 public class NewsController {
+
+    BingNewsSearch bingNewsSearch;
+    MyUtils myUtils = new MyUtils();
+
+    public NewsController(BingNewsSearch bingNewsSearch){
+        this.bingNewsSearch = bingNewsSearch;
+    }
 
     /**
      * @throws Exception
@@ -27,13 +35,7 @@ public class NewsController {
          * else return data from db*/
         BingNewsCondition bingNewsCondition = new BingNewsCondition();
 
-        if (!isFromDB) {
-            return BingNewsSearch.prettify(BingNewsSearch.SearchNews(bingNewsCondition).jsonResponse);
-        } else {
-            /*return data from database*/
-            return null;
-        }
-
+        return myUtils.prettify(bingNewsSearch.SearchNews(bingNewsCondition));
     }
 
     /**
@@ -47,7 +49,7 @@ public class NewsController {
      * @func: Used to support keyword search
      * @return: whole json data containing some useless header info, only the "value:[]" part is useful
      */
-    @PostMapping(value = "/getNews")
+    @PostMapping(value = "/getNews",consumes = "application/json;charset=UTF-8")
     private String returnKeyNews(@RequestBody Map<String, Object> requestMap) throws Exception {
         Boolean isFromDB = false;
 
@@ -68,12 +70,6 @@ public class NewsController {
         }
         System.out.println("current count: " + bingNewsCondition.getQuery());
 
-        if (!isFromDB) {
-            return BingNewsSearch.prettify(BingNewsSearch.SearchNews(bingNewsCondition).jsonResponse);
-        } else {
-            /*return data from database*/
-            return null;
-        }
-
+        return myUtils.prettify(bingNewsSearch.SearchNews(bingNewsCondition));
     }
 }

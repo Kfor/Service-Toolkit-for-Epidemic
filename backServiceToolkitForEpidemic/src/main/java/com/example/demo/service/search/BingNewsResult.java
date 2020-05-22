@@ -1,4 +1,4 @@
-package com.example.demo.search;
+package com.example.demo.service.search;
 
 import java.util.HashMap;
 
@@ -6,6 +6,10 @@ import java.util.HashMap;
 public class BingNewsResult {
     public HashMap<String, String> relevantHeaders;
     public String jsonResponse;
+
+    BingNewsResult(){
+
+    }
 
     BingNewsResult(HashMap<String, String> headers, String json) {
         relevantHeaders = headers;

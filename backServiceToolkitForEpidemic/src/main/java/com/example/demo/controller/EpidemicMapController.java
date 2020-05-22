@@ -2,14 +2,20 @@ package com.example.demo.controller;
 
 import com.example.demo.service.EpidemicMapService;
 import com.example.demo.utils.MyUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class EpidemicMapController {
-    EpidemicMapService epidemicMapService = new EpidemicMapService();
+    final
+    EpidemicMapService epidemicMapService;
     MyUtils myUtils = new MyUtils();
+
+    public EpidemicMapController(EpidemicMapService epidemicMapService) {
+        this.epidemicMapService = epidemicMapService;
+    }
 
     @GetMapping(value = "/getMapData")
     public String getMapData(@Param("area") String area) {
