@@ -4,9 +4,16 @@
     "pages/epidemicMap/community",
     "pages/epidemicMap/graph",
     "pages/globalInformation/globalInformation",
-    "pages/hot/hot",
+    "pages/crowdingOrdering/index",
+    "pages/crowdingOrdering/fruit",
+    "pages/crowdingOrdering/medicine",
+    "pages/crowdingOrdering/supermarket",
+    "pages/inquiry/index",
+    "pages/inquiry/clinic",
+    "pages/inquiry/drugstore",
+    "pages/inquiry/maskAuthenticity",
     "pages/detail/detail",
-    "pages/tag/tag",
+    "pages/inquiry/index",
     "pages/list/list",
     "pages/center/center",
     "pages/center/personalInfo",
@@ -42,13 +49,13 @@
         "text": "国际舆情"
       },
       {
-        "pagePath": "pages/hot/hot",
+        "pagePath": "pages/crowdingOrdering/index",
         "iconPath": "static/order-0.png",
         "selectedIconPath": "static/order-1.png",
         "text": "邻里拼团"
       },
       {
-        "pagePath": "pages/tag/tag",
+        "pagePath": "pages/inquiry/index",
         "iconPath": "static/search-0.png",
         "selectedIconPath": "static/search-1.png",
         "text": "防疫查询"
@@ -61,5 +68,6 @@
       }
     ]
   },
+  "permission": {},
   "usingComponents": {}
 }

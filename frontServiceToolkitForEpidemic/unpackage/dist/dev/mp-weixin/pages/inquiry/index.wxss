@@ -1,0 +1,21 @@
+
+.inquiry-index {
+	width: 100%;
+	margin: 0;
+}
+.inquiry-type-list {
+	margin: auto;
+	margin-top: 35px;
+}
+.inquiry-type-box {
+	background-color: #FFFFFF;
+	width: 90%;
+	height: 150px;
+	text-align: center;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: #CCCCCC;
+	border-style: solid;
+}
+

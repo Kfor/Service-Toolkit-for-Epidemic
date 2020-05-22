@@ -1,0 +1,30 @@
+
+.order-index {
+	width: 100%;
+	margin: 0;
+}
+.selectList {
+	width: 700rpx;
+	margin-left: 20rpx;
+	text-align: center;
+}
+.selectBox {
+	width: 100px;
+	height: 25px;
+	margin-top: 25px;
+	margin-bottom: 5px;
+	margin-left: 25rpx;
+}
+.order-type-list {}
+.order-type-box {
+	background-color: #FFFFFF;
+	width: 90%;
+	height: 150px;
+	text-align: center;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: #CCCCCC;
+	border-style: solid;
+}
+

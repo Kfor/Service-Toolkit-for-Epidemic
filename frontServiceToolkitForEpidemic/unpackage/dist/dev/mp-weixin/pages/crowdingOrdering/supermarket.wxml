@@ -1,0 +1,1 @@
+<view style="margin-top:10rpx;height:85%;" class="_div"><uni-search-bar bind:confirm="__e" vue-id="6baedf48-1" data-event-opts="{{[['^confirm',[['search']]]]}}" bind:__l="__l"></uni-search-bar><order-common-page vue-id="6baedf48-2" classify-data="{{classifyData}}" bind:__l="__l"></order-common-page></view>

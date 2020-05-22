@@ -55,6 +55,34 @@
 			}
 		},
 		{
+			"path": "pages/inquiry/index",
+			"style": {
+				"navigationBarTitleText": "防疫查询",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/inquiry/clinic",
+			"style": {
+				"navigationBarTitleText": "防疫查询-门诊点查询",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/inquiry/drugstore",
+			"style": {
+				"navigationBarTitleText": "防疫查询-药店查询",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/inquiry/maskAuthenticity",
+			"style": {
+				"navigationBarTitleText": "防疫查询-口罩真伪查询",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/detail/detail",
 			"style": {
 				"navigationBarTitleText": "详情",
@@ -78,7 +106,7 @@
 			}
 		},
 		{
-			"path": "pages/tag/tag",
+			"path": "pages/inquiry/index",
 			"style": {
 				"navigationBarTitleText": "防疫查询",
 				"enablePullDownRefresh": false
@@ -166,7 +194,7 @@
 				"text": "邻里拼团"
 			},
 			{
-				"pagePath": "pages/tag/tag",
+				"pagePath": "pages/inquiry/index",
 				"iconPath": "static/search-0.png",
 				"selectedIconPath": "static/search-1.png",
 				"text": "防疫查询"

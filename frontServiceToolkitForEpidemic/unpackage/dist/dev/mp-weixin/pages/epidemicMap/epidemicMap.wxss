@@ -7,11 +7,24 @@
 	min-height: 100vh;
 }
 .selection-div {
-    width:60px;
+	background-color: #FFFFFF;
 	height: 40px;
-	margin-top: 25px;
-	margin-bottom: 5px;
-	margin-left: 300px;
+	text-align: right;
+}
+.title1 {
+	line-height: 90rpx;
+	font-size: 34rpx;
+	font-weight: 700;
+	color: #000000;
+	margin-right: 20%;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.input-box {
+	margin-right: 25rpx;
+	margin-top: 25rpx;
+}
+.map-img {
+	background-color: #ffffff;
 }
 .block {
 	background-color: #FFFFFF;

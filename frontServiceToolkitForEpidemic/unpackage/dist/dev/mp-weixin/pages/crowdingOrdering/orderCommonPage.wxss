@@ -1,0 +1,69 @@
+
+.page-body {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	background: #fff;
+	overflow: hidden;
+}
+.nav {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	width: 100%;
+}
+.nav-left {
+	width: 25%;
+	background: #fafafa;
+}
+.nav-left-item {
+	height: 100rpx;
+	border-right: solid 1px #f1f1f1;
+	border-bottom: solid 1px #f1f1f1;
+	font-size: 30rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.nav-left-item:last-child {
+	border-bottom: none;
+}
+.nav-right {
+	width: 75%;
+}
+.box {
+	display: block;
+	overflow: hidden;
+	border-bottom: 20rpx solid #f3f3f3;
+	/* min-height: 100vh; */
+	/*若您的子分类过少想使得每个子分类占满屏请放开上边注视 */
+}
+.box:last-child {
+	border: none;
+	min-height: 100vh;
+}
+.nav-right-item {
+	width: 28%;
+	height: 220rpx;
+	float: left;
+	text-align: center;
+	padding: 11rpx;
+	font-size: 28rpx;
+	background: #fff;
+}
+.nav-right-item image {
+	width: 150rpx;
+	height: 150rpx;
+}
+.active {
+	color: #FF80AB;
+	background: #fff;
+	border-right: 0;
+}
+
