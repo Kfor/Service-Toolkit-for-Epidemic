@@ -298,7 +298,8 @@
                 "items": [
                     {
                         "name": "小火锅",
-                        "iconUrl": "http://img.kiwifruits.cn/classify/1/1.jpg"
+                        "iconUrl": "http://img.kiwifruits.cn/classify/1/1.jpg",
+                        "unit_price": 999.0
                     }
         			]
         		}

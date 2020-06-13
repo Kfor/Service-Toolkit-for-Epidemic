@@ -64,6 +64,7 @@ public class CrowdOrderingService {
                 JsonObject oneItemObject = new JsonObject();
                 oneItemObject.addProperty("name", oneItem.getItemName());
                 oneItemObject.addProperty("iconUrl", oneItem.getIconUrl());
+                oneItemObject.addProperty("unit_price",oneItem.getUnitPrice());
                 oneClassificationItemList.add(oneItemObject);
             }
             oneRes.add("items", oneClassificationItemList);
