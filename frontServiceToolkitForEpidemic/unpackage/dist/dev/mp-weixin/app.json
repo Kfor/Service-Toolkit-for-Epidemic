@@ -13,7 +13,6 @@
     "pages/inquiry/drugstore",
     "pages/inquiry/maskAuthenticity",
     "pages/detail/detail",
-    "pages/inquiry/index",
     "pages/list/list",
     "pages/center/center",
     "pages/center/personalInfo",
@@ -68,6 +67,6 @@
       }
     ]
   },
-  "permission": {},
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap71.json"
 }

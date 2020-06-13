@@ -27,7 +27,7 @@
 			}
 		},
 		{
-			"path": "pages/crowdingOrdering/index",
+			"path": "pages/crowdingOrdering/list",
 			"style": {
 				"navigationBarTitleText": "邻里拼团",
 				"enablePullDownRefresh": true
@@ -52,6 +52,12 @@
 			"style": {
 				"navigationBarTitleText": "邻里拼团-超市物品",
 				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/crowdingOrdering/item",
+			"style": {
+				"navigationBarTitleText": "邻里拼团"
 			}
 		},
 		{
@@ -103,13 +109,6 @@
 						}]
 					}
 				}
-			}
-		},
-		{
-			"path": "pages/inquiry/index",
-			"style": {
-				"navigationBarTitleText": "防疫查询",
-				"enablePullDownRefresh": false
 			}
 		},
 		{
@@ -188,7 +187,7 @@
 				"text": "国际舆情"
 			},
 			{
-				"pagePath": "pages/crowdingOrdering/index",
+				"pagePath": "pages/crowdingOrdering/list",
 				"iconPath": "static/order-0.png",
 				"selectedIconPath": "static/order-1.png",
 				"text": "邻里拼团"

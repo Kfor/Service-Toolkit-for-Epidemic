@@ -7,7 +7,7 @@
 
 <script>
 	import OrderCommonPage from "./orderCommonPage.vue";
-	import classifyData from '../../common/classify.data.js';
+	import classifyData from '../../common/supermarket.data.js';
 	
 	export default {
 		data: function(){

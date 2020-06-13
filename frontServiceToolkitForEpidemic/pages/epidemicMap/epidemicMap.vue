@@ -9,7 +9,7 @@
 				</picker>
 			</view>
 		</view>
-		<view style="width:100%;height:400px;margin:0 auto">
+		<view style="width:100%;margin:0 auto">
 			<div class="map-img" ref="mapbox" ></div>
 		</view>
 		<view class="outlineData" >
@@ -395,25 +395,23 @@
 		},
 		created(){
 			this.area=this.itemList[this.index].id;
+			
 		},
-		onReady(){  //template挂载到页面时调用
-			console.log("onready");
+		mounted(){  //template挂载到页面时调用
+		
 			this.getMapData();
-					
-			this.getOutlineData(); //执行getOutlineData方法
-			this.mycharts = echarts.init(this.$refs.mapbox);
+		    this.getOutlineData(); //执行getOutlineData方法
 			    // 初始化echarts
-			this.$nextTick(()=>{
-				
-				this.mycharts.setOption(option)
-			});
+			
+			this.mycharts = echarts.init(this.$refs.mapbox);
+			this.mycharts.setOption(option);
 			
 		//	console.log('mapList',this.mapList);
 		//	console.log('mapdata',this.mapData);
 			
 		},
 		methods: {
-			getMapData:function(){
+			getMapData(){
 				uni.request({
 					url: this.$serverUrl + '/getMapData?area=' + this.area,
 					//method: 'GET',
@@ -453,7 +451,7 @@
 		//		
 			},
 			
-			getOutlineData:function() {
+			getOutlineData() {
 				console.log(this.$serverUrl + '/getOutlineData?area=' + this.area);
 				uni.request({
 					url: this.$serverUrl + '/getOutlineData?area=' + this.area,
@@ -480,12 +478,12 @@
 				});
 			},
 			
-			goCommunity:function() {
+			goCommunity() {
 				uni.navigateTo({
 					url: '/pages/epidemicMap/community'
 				});
 			},
-			goGraph:function() {
+			goGraph() {
 				uni.navigateTo({
 					url: '/pages/epidemicMap/graph'
 				});
@@ -535,10 +533,13 @@
 	
 	.map-img {
 		background-color: #ffffff;
+		width: 750upx;
+		height: 500upx;
+		
 	}
 	.outlineData{
 		width: 750upx;
-		margin-top: 10upx;
+		margin-top: 00upx;
 		flex-direction: column;
 	}
 	
@@ -611,10 +612,6 @@
 		margin-left: 20upx;
 	}
 	
-	.map-img {
-		width: 720upx;
-		height: 440upx;
-	}
 	
 	
 	

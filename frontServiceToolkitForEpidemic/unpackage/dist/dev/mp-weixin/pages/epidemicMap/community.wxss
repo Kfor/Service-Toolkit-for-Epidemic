@@ -5,14 +5,14 @@
 	text-align: center;
 }
 .selectBox {
-	width: 100px;
+	width:100px;
 	height: 25px;
 	margin-top: 25px;
 	margin-bottom: 5px;
 	margin-left: 25rpx;
 }
 .contentList {
-	background-color: #ffffff;
+	background-color: #FFFFFF;
 	width: 95%;
 	margin-top: 150rpx;
 	margin-left: 2.5%;
@@ -20,12 +20,12 @@
 	position: absolute;
 }
 .title {
-	width: 330rpx;
+	width:330rpx;
 	font-size: 34rpx;
 	font-weight: 700;
 	line-height: 100rpx;
 	margin-left: 120rpx;
-	margin-right: 150rpx;
+	margin-right:150rpx;
 	position: relative;
 }
 .block {
@@ -38,10 +38,10 @@
 	height: 80rpx;
 	margin: 20rpx 0 20rpx 20rpx;
 	font-size: 28rpx;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: row;
-	        flex-direction: row;
+	-webkit-box-orient:horizontal;
+	-webkit-box-direction:normal;
+	-webkit-flex-direction:row;
+	        flex-direction:row;
 	float: left;
 }
 .col2 {
@@ -58,4 +58,6 @@
 	font-size: 25rpx;
 	float: left;
 }
+
+
 

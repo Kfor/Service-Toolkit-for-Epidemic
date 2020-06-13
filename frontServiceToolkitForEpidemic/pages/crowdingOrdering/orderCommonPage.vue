@@ -10,9 +10,10 @@
 			<scroll-view class="nav-right" scroll-y :scroll-top="scrollTop" @scroll="scroll" :style="'height:'+height+'px'"
 			 scroll-with-animation>
 				<view v-for="(foods,index) in classifyData" :key="index" class="box">
-					<view :id="i==0?'first':''" class="nav-right-item" v-for="(item,i) in foods.foods" :key="i" @click="cart(item.name)">
-						<image :src="item.icon" />
-						<view>{{item.name}}</view>
+					<view :id="i==0?'first':''" class="nav-right-item" v-for="(item,i) in foods.items" :key="i" @click="itemClick(item.name, item.iconUrl, item.unit_price)">
+						<image class='img-icon' :src= "item.iconUrl" />
+						<view>{{item.name}}  </view>
+						
 					</view>
 				</view>
 			</scroll-view>
@@ -24,7 +25,7 @@
 	export default {
 		name: "OrderCommonPage",
 		props: {
-			classifyData: Array,
+			classifyData: Array
 		},
 		components: {
 			uniSearchBar
@@ -42,19 +43,18 @@
 				navLeftHeight: 0, //左边scroll-view 内层nav的总高度
 				diff: 0, //左边scroll-view 内层nav的总高度与视口之差
 				tabBarHeight: 0, //如果此页面为Tab页面，自己改变高度值,,一般tab高度为51
+
 			}
 		},
 		created() {
 			//如果你的分类数据为后台异步获取请	将下方代码放置你的数据回调中
-			// this.$nextTick(()=>{
-			// 	this.getHeightList();
-			// })
+		//	 this.$nextTick(()=>{
+		//	 	this.getHeightList();
+		//	 })
+			 
 		},
 		beforeMount: function() {
 			this.height = uni.getSystemInfoSync().windowHeight - this.tabBarHeight;
-		},
-		mounted() {
-			this.getHeightList();
 		},
 		methods: {
 			getHeightList() {
@@ -111,12 +111,20 @@
 				this.categoryActive = index;
 				this.scrollTop == this.arr[index] ? this.scrollTop = this.scrollTop + 1 : this.scrollTop = this.arr[index] //防止两次相等造成点击不触发滚动时间
 			},
+			itemClick(name, icon, price) {
+				console.log('item:'+icon);
+			//	console.log(detriment);
+				uni.navigateTo({
+					url: '/pages/crowdingOrdering/item?name='+name+
+					'&icon='+icon+'&price='+price
+				});
+			},
 			cart: function(text) {
 				uni.showToast({
 					title: text,
 					icon: "none",
 				})
-			}
+			},
 		}
 	}
 </script>
@@ -126,6 +134,7 @@
 		display: flex;
 		background: #fff;
 		overflow: hidden;
+		width: 100%;
 	}
 
 	.nav {
@@ -160,7 +169,7 @@
 		display: block;
 		overflow: hidden;
 		border-bottom: 20upx solid #f3f3f3;
-		/* min-height: 100vh; */
+		 min-height: 100vh; 
 		/*若您的子分类过少想使得每个子分类占满屏请放开上边注视 */
 	}
 
@@ -170,7 +179,7 @@
 	}
 
 	.nav-right-item {
-		width: 28%;
+		width: 45%;
 		height: 220upx;
 		float: left;
 		text-align: center;
@@ -180,8 +189,8 @@
 	}
 
 	.nav-right-item image {
-		width: 150upx;
-		height: 150upx;
+		width: 250upx;
+		height: 200upx;
 	}
 
 	.active {

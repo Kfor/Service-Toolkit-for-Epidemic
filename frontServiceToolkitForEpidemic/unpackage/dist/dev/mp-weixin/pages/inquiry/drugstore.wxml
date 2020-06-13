@@ -1,1 +1,1 @@
-<view class="_div"></view>
+<view style="width:100%;height:500px;" src="static/mapMap.html" scrolling="no" frameborder="0" class="_iframe"></view>

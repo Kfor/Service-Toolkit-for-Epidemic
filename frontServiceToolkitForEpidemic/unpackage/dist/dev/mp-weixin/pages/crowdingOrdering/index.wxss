@@ -15,16 +15,17 @@
 	margin-bottom: 5px;
 	margin-left: 25rpx;
 }
-.order-type-list {}
+.order-type-list {
+}
 .order-type-box {
-	background-color: #FFFFFF;
+	background-color: #ffffff;
 	width: 90%;
 	height: 150px;
 	text-align: center;
 	margin: auto;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	border: #CCCCCC;
+	border: #cccccc;
 	border-style: solid;
 }
 

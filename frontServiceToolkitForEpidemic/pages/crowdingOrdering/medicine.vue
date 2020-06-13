@@ -7,12 +7,12 @@
 
 <script>
 	import OrderCommonPage from "./orderCommonPage.vue";
-	import classifyData from '../../common/classify.data.js';
+	import classifyData from '../../common/medicine.data.js';
 	
 	export default {
 		data: function(){
 			return {
-				classifyData: classifyData,
+				classifyData: classifyData
 			};
 		},
 		methods: {
