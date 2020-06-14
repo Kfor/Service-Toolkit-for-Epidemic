@@ -2,13 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32e29c99-dcbd-4580-b120-3ee0df949a7c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backService-API/SE-back.postman_collection.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backService-API/address_p_c_c.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backService-API/conOrder_t_u_i_q.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backService-API/news_q_m_c.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backService-API/qHosCity_c.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backService-API/qMask_n.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/controller/CrowdOrderingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/dao/CrowdOrderingItemDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/dao/CrowdOrderingItemOrderDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/dao/CrowdOrderingOrderDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/dao/CrowdOrderingUserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/dao/EpidemicMapDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/dao/NewsDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/model/EpidemicMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/model/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/model/ItemOrder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/model/News.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/model/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/service/CrowdOrderingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/utils/TimeHoursAgo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/sitemap.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/sitemap10.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/controller/EpidemicMapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/controller/EpidemicMapController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/controller/NewsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/controller/NewsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/model/MapPage/EpidemicMapModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/search/BingNewsCondition.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/service/search/BingNewsCondition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/search/BingNewsResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/service/search/BingNewsResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/search/BingNewsSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/service/search/BingNewsSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/service/EpidemicMapService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/java/com/example/demo/service/EpidemicMapService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../backServiceToolkitForEpidemic/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js_sdk/u-charts/u-charts/component.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js_sdk/u-charts/u-charts/u-charts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js_sdk/u-charts/u-charts/u-charts.min.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/tag/tag.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/crowdingOrdering/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/crowdingOrdering/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/epidemicMap/community.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/epidemicMap/community.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/epidemicMap/epidemicMap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/epidemicMap/epidemicMap.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/common/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/common/main.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/common/runtime.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/common/runtime.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/common/vendor.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/common/vendor.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/center/center.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/center/center.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/center/collection.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/center/collection.js.map" afterDir="false" />
@@ -22,56 +56,35 @@
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/epidemicMap/epidemicMap.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/epidemicMap/epidemicMap.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/epidemicMap/graph.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/epidemicMap/graph.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/globalInformation/globalInformation.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/globalInformation/globalInformation.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/hot/hot.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/hot/hot.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/list/list.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/list/list.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/tag/tag.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/.sourcemap/mp-weixin/pages/tag/tag.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/app.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/app.wxss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/common/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/common/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/common/main.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/common/main.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/common/runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/common/runtime.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/common/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/common/vendor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/center.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/center.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/center.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/center.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/center.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/center.wxss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/collection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/collection.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/order.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/order.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/order.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/personalInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/personalInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/personalInfo.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/personalInfo.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/reflection.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/reflection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/reflection.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/reflection.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/settings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/version.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/version.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/version.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/center/version.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/crowdingOrdering/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/crowdingOrdering/index.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/detail/detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/detail/detail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/detail/detail.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/detail/detail.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/detail/detail.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/detail/detail.wxss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/community.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/community.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/community.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/community.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/community.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/community.wxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/community.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/community.wxss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/epidemicMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/epidemicMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/epidemicMap.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/epidemicMap.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/epidemicMap.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/epidemicMap.wxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/epidemicMap.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/epidemicMap.wxss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/graph.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/graph.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/graph.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/epidemicMap/graph.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/globalInformation/globalInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/globalInformation/globalInformation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/globalInformation/globalInformation.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/globalInformation/globalInformation.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/globalInformation/globalInformation.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/globalInformation/globalInformation.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/hot/hot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/hot/hot.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/hot/hot.wxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/hot/hot.wxss" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/list/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/list/list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/list/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/list/list.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/list/list.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/list/list.wxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/list/list.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/list/list.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/tag/tag.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/tag/tag.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/tag/tag.wxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/tag/tag.js" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/pages/tag/tag.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/unpackage/dist/dev/mp-weixin/project.config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/../readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +118,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -159,6 +172,7 @@
       <updated>1588387141685</updated>
       <workItem from="1588387143440" duration="96000" />
       <workItem from="1590126432463" duration="2452000" />
+      <workItem from="1590132457154" duration="58000" />
     </task>
     <servers />
   </component>
@@ -170,7 +184,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

@@ -46,9 +46,9 @@
 		data() {
 			return {
 				login: false,
-				avatarUrl: '/static/logo.png',
-				userInfo: {name:"张三",
-						avatarUrl:'/static/logo.png'}
+				avatarUrl: '/static/man.png',
+				userInfo: {name:"李建国",
+						avatarUrl:'/static/man.jpg'}
 			}
 		},
 		methods: {
@@ -74,7 +74,7 @@
 			},
 			goReflection() {
 				uni.navigateTo({
-					url: '/pages/center/reflection'
+					url: '/pages/center/feedback'
 				});
 			},
 			goVersion() {
