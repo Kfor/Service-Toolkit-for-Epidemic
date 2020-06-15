@@ -15,7 +15,7 @@ public class QuiryService {
     private final String akkey = "M0998imE0sDc6RvHDIk8UlA8195rw6u1";
     private final String MASK_HOST = "http://indevice.market.alicloudapi.com";
     private final String MASK_PATH = "/kgraph/domestic_medical_device/search_register_id/v1";
-    private final String appcode = "0b177b0df5c843218058d715c784c425";
+    private final String appcode = "a293563db4c84a238b46c61ed1a97aa5";
 
     public String getHospitalPosition(String area) {
         String url = HOSPITAL + "&region=" + area + "&output=json&ak=" + akkey;
