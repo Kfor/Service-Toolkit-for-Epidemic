@@ -1,6 +1,6 @@
  <template>
 	 <view class="mask">
-	 	<view class="search">
+	 	<view>
 	 		<view class="search-block">
 	 			<view class="search-ico-wapper">
 	 				<text class="list-icon">&#59264;</text>

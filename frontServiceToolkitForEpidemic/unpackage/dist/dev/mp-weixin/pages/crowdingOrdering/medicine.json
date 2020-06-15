@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "邻里拼团-医用物品",
-  "enablePullDownRefresh": true,
-  "usingComponents": {
-    "uni-search-bar": "/components/uni-search-bar/uni-search-bar",
-    "order-common-page": "/pages/crowdingOrdering/orderCommonPage"
-  }
-}

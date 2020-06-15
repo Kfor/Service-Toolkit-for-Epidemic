@@ -1,0 +1,47 @@
+
+.logo-img {
+	width: 150rpx;
+	height: 150rpx;
+	margin-left: 50rpx;
+	border-radius: 150rpx;
+}
+.uer-name {
+	height: 60rpx;
+	line-height: 60rpx;
+	margin-left: 20rpx;
+	font-size: 43rpx;
+	color: #FFFFFF;
+}
+.center-list-item {
+	height: 150rpx;
+}
+.list-text {
+	padding-top: 30rpx;
+	padding-left: 40rpx;
+}
+.list-icon {
+	padding-top: 30rpx;
+}
+.navigat-arrow {
+	padding-top: 30rpx;
+}
+.img {
+	height: 100rpx;
+	width: 100rpx;
+	padding-top: 20rpx;
+	padding-right: 40rpx;
+}
+.content {
+	padding-top: 50rpx;
+	text-align:right;
+	padding-right: 40rpx;
+	color: #939393;
+}
+.content2 {
+	padding-top: 50rpx;
+	text-align:right;
+	padding-right: 40rpx;
+	color: #939393;
+}
+
+

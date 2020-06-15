@@ -3,15 +3,15 @@
 		<div class="inquiry-type-list">
 			<div class="inquiry-type-box" @click="gotoClinic">
 				<icon></icon>
-				<text>门诊点查询</text>
+				<image class = 'imag' src ='../../static/hospital.jpg'></image>
 			</div>
 			<div class="inquiry-type-box" @click="gotoDrugstore">
 				<icon></icon>
-				<text>药店查询</text>
+				<image class = 'imag' src ='../../static/drug.jpg'></image>
 			</div>
 			<div class="inquiry-type-box" @click="gotoMask">
 				<icon></icon>
-				<text>口罩真伪查询</text>
+				<image class = 'imag2' src ='../../static/inquiries.jpg'></image>
 			</div>
 		</div>
 	</div>
@@ -60,5 +60,15 @@
 		margin-bottom: 10px;
 		border: #CCCCCC;
 		border-style: solid;
+	}
+	.imag{
+		height:80%;
+		margin-top: 20upx;
+		margin-left: 20upx;
+	}
+	.imag2{
+		height:80%;
+		margin-top: 30upx;
+		margin-left: 20upx;
 	}
 </style>

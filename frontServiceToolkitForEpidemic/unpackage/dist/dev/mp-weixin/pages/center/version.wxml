@@ -1,0 +1,1 @@
+<view class="center"><view class="center-list"><view class="center-list-item0 "><image class="img" src="{{userInfo.avatarUrl}}"></image></view><text class="text">v2.0</text></view><view class="center-list"><view class="center-list-item"><text class="list-text">版本更新</text><text class="content">已是最新版本</text></view></view></view>
